@@ -378,10 +378,21 @@ MonoBehaviour:
   m_DownKeyCode: 115
   m_JumpKeyCode: 32
   m_RunKeyCode: 304
+  m_DebugLockAngleKeyCode: 105
+  m_DebugLockKeyCode: 111
+  m_JumpSpeed: 6
+  m_DecalPrefab: {fileID: 0}
   m_Camera: {fileID: 963194227}
   m_NormalMovementFOV: 60
   m_RunMovementFOV: 75
-  m_JumpSpeed: 6
+  m_MaxShootDistance: 50
+  m_ShootinLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Animations: {fileID: 0}
+  m_ShootingAnimationClip: {fileID: 0}
+  m_IdleAnimationClip: {fileID: 0}
+  m_ReloadAnimationClip: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +963,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_LPSP_WEP_AR_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969608813793479308, guid: 7550f3d877aa1704b855836414a56b4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969608813793479310, guid: 7550f3d877aa1704b855836414a56b4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3969608813793515168, guid: 7550f3d877aa1704b855836414a56b4b,
         type: 3}
