@@ -36,7 +36,7 @@ public class FFPlayerController : MonoBehaviour
 
     public float m_JumpSpeed = 10.0f;
 
-    public GameObject m_DecalPrefab;
+    //public GameObject m_DecalPrefab;
 
     [Header("Camera")]
     public Camera m_Camera;
@@ -46,6 +46,8 @@ public class FFPlayerController : MonoBehaviour
     [Header("Shoot")]
     public float m_MaxShootDistance;
     public LayerMask m_ShootinLayerMask;
+    public GameObject m_Bullet;
+    public Transform m_BulletSpawn;
 
     [Header("Animations")]
     public Animation m_Animations;
@@ -154,7 +156,9 @@ public class FFPlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && CanShoot())
         {
+            StartCoroutine(EndShoot());
             Shoot();
+            Debug.Log("Shooting");
         }
     }
 
@@ -167,16 +171,32 @@ public class FFPlayerController : MonoBehaviour
     {
         Ray l_Ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         RaycastHit l_RayCastHit;
+        Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 1));
+        Debug.DrawRay(m_Camera.transform.position, direction * 100, Color.green, 5f);
+
+        GameObject m_CurrentBullet = Instantiate(m_Bullet);
+        m_CurrentBullet.transform.position = m_BulletSpawn.position;        
+
         if (Physics.Raycast(l_Ray, out l_RayCastHit, m_MaxShootDistance, m_ShootinLayerMask.value))
+        {
             CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
-        SetWeaponShootAnimation();
+            m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
+            //SetWeaponShootAnimation();
+        }
+
+        else
+        {
+            Vector3 dir = m_Camera.transform.position + direction * 10f;
+            m_CurrentBullet.transform.LookAt(dir);
+        }     
+        
         m_Shooting = true;
     }
 
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
     {
         //Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
-        GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
+        //GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
     }
 
     void SetIdleWeaponAnimation()
@@ -193,7 +213,8 @@ public class FFPlayerController : MonoBehaviour
 
     IEnumerator EndShoot()
     {
-        yield return new WaitForSeconds(m_ShootingAnimationClip.length);
+        //yield return new WaitForSeconds(m_ShootingAnimationClip.length);
+        yield return new WaitForSeconds(0.1f);
         m_Shooting = false;
     }
 }
