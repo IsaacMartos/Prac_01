@@ -27,6 +27,7 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_RunKeyCode = KeyCode.LeftShift;
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
+    public KeyCode m_ReloadKeyCode = KeyCode.R;
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
 
@@ -156,9 +157,13 @@ public class FFPlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && CanShoot())
         {
-            StartCoroutine(EndShoot());
             Shoot();
             Debug.Log("Shooting");
+        }
+
+        if (Input.GetKeyDown(m_ReloadKeyCode))
+        {
+            SetReloadAnimation();
         }
     }
 
@@ -181,7 +186,7 @@ public class FFPlayerController : MonoBehaviour
         {
             CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
             m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
-            //SetWeaponShootAnimation();
+            SetWeaponShootAnimation();
         }
 
         else
@@ -191,6 +196,8 @@ public class FFPlayerController : MonoBehaviour
         }     
         
         m_Shooting = true;
+
+        Debug.Log(l_RayCastHit.collider);
     }
 
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
@@ -211,10 +218,15 @@ public class FFPlayerController : MonoBehaviour
         StartCoroutine(EndShoot());
     }
 
+    void SetReloadAnimation()
+    {
+        m_Animations.CrossFade(m_ReloadAnimationClip.name);
+    }
+
     IEnumerator EndShoot()
     {
-        //yield return new WaitForSeconds(m_ShootingAnimationClip.length);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(m_ShootingAnimationClip.length);
+        //yield return new WaitForSeconds(0.1f);
         m_Shooting = false;
     }
 }
