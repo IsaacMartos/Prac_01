@@ -69,8 +69,7 @@ public class FFPlayerController : MonoBehaviour
     //añadir tiempo animaciones para no tener que hardcodearlo
     void Start()
     {
-        m_Life = GameController.GetGameController().SetPlayerLife();
-        m_CurrentAmmo = GameController.GetGameController().SetCurrentAmmo();        
+        m_Life = GameController.GetGameController().SetPlayerLife();        
         m_Yaw = transform.rotation.y;
         m_Pitch = m_PitchController.localRotation.x;
         Cursor.lockState = CursorLockMode.Locked;

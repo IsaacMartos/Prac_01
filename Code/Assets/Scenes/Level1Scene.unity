@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Bullet: {fileID: 6931565664397813329, guid: ca7ccfa026827514bb38c3feddc9b796,
     type: 3}
   m_BulletSpawn: {fileID: 1528734831}
-  m_MaxAmmo: 50
+  m_MaxAmmo: 60
   m_AmmoCapacity: 30
   m_CurrentAmmoText: {fileID: 347064811}
   m_Animations: {fileID: 494145148}
