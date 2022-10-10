@@ -48,7 +48,12 @@ public class FFPlayerController : MonoBehaviour
     public float m_MaxShootDistance;
     public LayerMask m_ShootinLayerMask;
     public GameObject m_Bullet;
-    public Transform m_BulletSpawn;
+    public Transform m_BulletSpawn;    
+    
+    int m_CurrentMaxAmmo;
+    public int m_MaxAmmo;
+    public int m_AmmoCapacity;
+    int m_CurrentAmmo;
 
     [Header("Animations")]
     public Animation m_Animations;
@@ -68,6 +73,8 @@ public class FFPlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
         SetIdleWeaponAnimation();
+        m_CurrentAmmo = m_AmmoCapacity;
+        m_CurrentMaxAmmo = m_MaxAmmo;
 
     }
 #if UNITY_EDITOR
@@ -155,15 +162,33 @@ public class FFPlayerController : MonoBehaviour
         else
             m_OnGround = false;
 
-        if (Input.GetMouseButtonDown(0) && CanShoot())
+        if (Input.GetMouseButtonDown(0) && CanShoot() && m_CurrentAmmo > 0)
         {
             Shoot();
             Debug.Log("Shooting");
         }
 
-        if (Input.GetKeyDown(m_ReloadKeyCode))
+        Debug.Log(m_CurrentAmmo + "current ammo ");
+        Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
+
+        if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity)
         {
-            SetReloadAnimation();
+            if (Input.GetKeyDown(m_ReloadKeyCode))
+                {
+                    SetReloadAnimation();
+
+                    if ((m_AmmoCapacity - m_CurrentAmmo) >= m_CurrentMaxAmmo)
+                    {
+                        m_CurrentMaxAmmo -= (m_AmmoCapacity - m_CurrentAmmo);
+                        m_CurrentAmmo += (m_AmmoCapacity - m_CurrentAmmo);
+                    }
+                    else
+                    {
+                        m_CurrentAmmo += m_CurrentMaxAmmo;
+                        m_CurrentMaxAmmo = 0;
+                    }
+            }
+            
         }
     }
 
@@ -196,6 +221,7 @@ public class FFPlayerController : MonoBehaviour
         }     
         
         m_Shooting = true;
+        DecreaseAmmo();
 
         Debug.Log(l_RayCastHit.collider);
     }
@@ -228,5 +254,10 @@ public class FFPlayerController : MonoBehaviour
         yield return new WaitForSeconds(m_ShootingAnimationClip.length);
         //yield return new WaitForSeconds(0.1f);
         m_Shooting = false;
+    }
+
+    public void DecreaseAmmo()
+    {
+        m_CurrentAmmo--;
     }
 }
