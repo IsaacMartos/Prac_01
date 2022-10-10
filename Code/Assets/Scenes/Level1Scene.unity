@@ -896,7 +896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494145144}
   m_LocalRotation: {x: -0, y: 0.7716352, z: -0, w: 0.63606536}
-  m_LocalPosition: {x: 40.54, y: 0, z: 60.4}
+  m_LocalPosition: {x: 41.351, y: 0.281, z: 60.242}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 926459575}
@@ -2440,7 +2440,7 @@ PrefabInstance:
     - target: {fileID: 3969608813793479296, guid: 7550f3d877aa1704b855836414a56b4b,
         type: 3}
       propertyPath: m_Name
-      value: P_LPSP_WEP_AR_01
+      value: Arma01
       objectReference: {fileID: 0}
     - target: {fileID: 3969608813793479308, guid: 7550f3d877aa1704b855836414a56b4b,
         type: 3}

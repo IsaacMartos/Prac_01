@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4120651009696513976}
   - component: {fileID: 5001062088206340947}
   m_Layer: 0
-  m_Name: P_LPSP_WEP_AR_01
+  m_Name: Arma01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

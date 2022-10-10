@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 8399002912088344312}
   - component: {fileID: 3700574615253928834}
   m_Layer: 0
-  m_Name: P_LPSP_WEP_Handgun_03
+  m_Name: Arma02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
