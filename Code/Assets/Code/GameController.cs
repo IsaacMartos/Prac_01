@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     static GameController m_GameController = null;
     public GameObject m_Player;
-    public Text m_CurrentAmmoText;
-    float m_PlayerLife;
-    float m_PlayerPoints;
-    float m_CurrentAmmo;
+    float m_PlayerLife = 3f;
+    //float m_PlayerPoints;
+    int m_CurrentAmmo = 30;
 
     private void Start()
-    {
+    {        
         DontDestroyOnLoad(this.gameObject);
-        //m_CurrentAmmo = m_Player.GetComponent<FFPlayerController>().current;
     }
 
     public static GameController GetGameController()
@@ -40,8 +39,14 @@ public class GameController : MonoBehaviour
         return m_PlayerLife;
     }
 
-    public void ReloadCapacity(float Points)
+    public void SetCurrentAmmo(int CurrentAmmo)
     {
-
+        m_CurrentAmmo = CurrentAmmo;
     }
+    public int SetCurrentAmmo()
+    {
+        return m_CurrentAmmo;
+    }
+
+
 }

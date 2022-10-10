@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FFPlayerController : MonoBehaviour
 {
@@ -54,6 +55,7 @@ public class FFPlayerController : MonoBehaviour
     public int m_MaxAmmo;
     public int m_AmmoCapacity;
     int m_CurrentAmmo;
+    public TextMeshProUGUI m_CurrentAmmoText;
 
     [Header("Animations")]
     public Animation m_Animations;
@@ -68,6 +70,7 @@ public class FFPlayerController : MonoBehaviour
     void Start()
     {
         m_Life = GameController.GetGameController().SetPlayerLife();
+        m_CurrentAmmo = GameController.GetGameController().SetCurrentAmmo();        
         m_Yaw = transform.rotation.y;
         m_Pitch = m_PitchController.localRotation.x;
         Cursor.lockState = CursorLockMode.Locked;
@@ -162,34 +165,31 @@ public class FFPlayerController : MonoBehaviour
         else
             m_OnGround = false;
 
+        m_CurrentAmmoText.text = "Ammo: " + m_CurrentAmmo.ToString() + " / " + m_CurrentMaxAmmo.ToString();
+
         if (Input.GetMouseButtonDown(0) && CanShoot() && m_CurrentAmmo > 0)
         {
             Shoot();
             Debug.Log("Shooting");
         }
 
-        Debug.Log(m_CurrentAmmo + "current ammo ");
-        Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
+        //Debug.Log(m_CurrentAmmo + " current ammo ");
+        //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
-        if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity)
+        if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity) 
         {
             if (Input.GetKeyDown(m_ReloadKeyCode))
-                {
-                    SetReloadAnimation();
-
-                    if ((m_AmmoCapacity - m_CurrentAmmo) >= m_CurrentMaxAmmo)
-                    {
-                        m_CurrentMaxAmmo -= (m_AmmoCapacity - m_CurrentAmmo);
-                        m_CurrentAmmo += (m_AmmoCapacity - m_CurrentAmmo);
-                    }
-                    else
-                    {
-                        m_CurrentAmmo += m_CurrentMaxAmmo;
-                        m_CurrentMaxAmmo = 0;
-                    }
+            {
+                SetReloadAnimation();
+                StartCoroutine(Reload());                
             }
             
         }
+        else if (m_CurrentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+        }
+
     }
 
     private bool CanShoot()
@@ -222,8 +222,7 @@ public class FFPlayerController : MonoBehaviour
         
         m_Shooting = true;
         DecreaseAmmo();
-
-        Debug.Log(l_RayCastHit.collider);
+        //Debug.Log(l_RayCastHit.collider);
     }
 
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
@@ -252,12 +251,29 @@ public class FFPlayerController : MonoBehaviour
     IEnumerator EndShoot()
     {
         yield return new WaitForSeconds(m_ShootingAnimationClip.length);
-        //yield return new WaitForSeconds(0.1f);
         m_Shooting = false;
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(m_ReloadAnimationClip.length);
+        if ((m_AmmoCapacity - m_CurrentAmmo) <= m_CurrentMaxAmmo)
+        {
+            m_CurrentMaxAmmo -= (m_AmmoCapacity - m_CurrentAmmo);
+            m_CurrentAmmo += (m_AmmoCapacity - m_CurrentAmmo);
+        }
+        else
+        {
+            m_CurrentAmmo += m_CurrentMaxAmmo;
+            m_CurrentMaxAmmo = 0;
+        }
+
     }
 
     public void DecreaseAmmo()
     {
         m_CurrentAmmo--;
     }
+
+    
 }
