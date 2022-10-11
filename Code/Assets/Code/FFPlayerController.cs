@@ -196,9 +196,9 @@ public class FFPlayerController : MonoBehaviour
             
         }
         if (m_CurrentAmmo <= 0)
-        {
-            SetReloadAnimation();
+        {            
             StartCoroutine(Reload());
+            SetReloadAnimation();
         }
 
     }
@@ -264,7 +264,8 @@ public class FFPlayerController : MonoBehaviour
 
     void SetReloadAnimation()
     {
-        m_Animations.CrossFade(m_ReloadAnimationClip.name);
+        m_Animations.CrossFade(m_ReloadAnimationClip.name, 0.1f);
+        m_Animations.CrossFadeQueued(m_IdleAnimationClip.name, 0.1f);
     }
 
     IEnumerator EndShoot()
