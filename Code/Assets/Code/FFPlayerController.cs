@@ -195,7 +195,7 @@ public class FFPlayerController : MonoBehaviour
             }
             
         }
-        if (m_CurrentAmmo <= 0)
+        if (m_CurrentAmmo == 0)
         {            
             StartCoroutine(Reload());
             SetReloadAnimation();

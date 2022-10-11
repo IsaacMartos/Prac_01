@@ -27,10 +27,20 @@ public class Bullet: MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Target")
+        if(collision.gameObject.tag == "EDiana")
         {
             collision.gameObject.SetActive(false);
-            GameController.m_GameController.HitDiana();
+            GameController.m_GameController.HitEasyDiana();
+        }
+        if (collision.gameObject.tag == "NDiana")
+        {
+            collision.gameObject.SetActive(false);
+            GameController.m_GameController.HitNormalDiana();
+        }
+        if (collision.gameObject.tag == "DDiana")
+        {
+            collision.gameObject.SetActive(false);
+            GameController.m_GameController.HitHardDiana();
         }
     }
 

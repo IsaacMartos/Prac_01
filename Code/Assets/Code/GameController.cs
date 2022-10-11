@@ -7,7 +7,9 @@ public class GameController : MonoBehaviour
     public static GameController m_GameController = null;   
     float m_PlayerLife = 3f;
     int m_PlayerPoints = 0;
+    int m_EasyDianaPoints = 10;
     int m_DianaPoints = 20;
+    int m_DifficultDiana = 50; 
     int m_CurrentAmmo = 30;
 
     private void Start()
@@ -56,9 +58,19 @@ public class GameController : MonoBehaviour
         return m_PlayerPoints;
     }
 
-    public int HitDiana()
+    public int HitEasyDiana()
+    {
+        m_PlayerPoints += m_EasyDianaPoints;
+        return m_PlayerPoints;
+    }
+    public int HitNormalDiana()
     {
         m_PlayerPoints += m_DianaPoints;
+        return m_PlayerPoints;
+    }
+    public int HitHardDiana()
+    {
+        m_PlayerPoints += m_DifficultDiana;
         return m_PlayerPoints;
     }
 

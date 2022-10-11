@@ -16,6 +16,9 @@ TagManager:
   - Wood (Static)
   - Dirt (Static)
   - Wood
+  - NDiana
+  - EDiana
+  - DDiana
   layers:
   - Default
   - TransparentFX
