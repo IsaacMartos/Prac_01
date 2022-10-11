@@ -23,6 +23,15 @@ public class Bullet: MonoBehaviour
     private void FixedUpdate()
     {
         transform.position += transform.forward * m_Speed * Time.fixedDeltaTime;
-    }    
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Target")
+        {
+            collision.gameObject.SetActive(false);
+            GameController.m_GameController.HitDiana();
+        }
+    }
 
 }

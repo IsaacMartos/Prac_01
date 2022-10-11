@@ -46,6 +46,7 @@ public class FFPlayerController : MonoBehaviour
     public float m_RunMovementFOV = 75.0f;
 
     [Header("Shoot")]
+    public GameObject m_DecalPrefab;
     public float m_MaxShootDistance;
     public LayerMask m_ShootinLayerMask;
     public GameObject m_Bullet;
@@ -177,13 +178,12 @@ public class FFPlayerController : MonoBehaviour
         m_PointsText.text = "Your Points: " + GameController.m_GameController.GetPoints();
                 
 
-        if (Input.GetMouseButtonDown(0) && CanShoot() && m_CurrentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && m_CurrentAmmo > 0)
         {
             Shoot();
-            //Debug.Log("Shooting");
         }
 
-        Debug.Log(m_CurrentAmmo + " current ammo ");
+        //Debug.Log(m_CurrentAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
         if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity) 
@@ -195,8 +195,9 @@ public class FFPlayerController : MonoBehaviour
             }
             
         }
-        else if (m_CurrentAmmo <= 0)
+        if (m_CurrentAmmo <= 0)
         {
+            SetReloadAnimation();
             StartCoroutine(Reload());
         }
 
@@ -211,7 +212,8 @@ public class FFPlayerController : MonoBehaviour
     {
         Ray l_Ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         RaycastHit l_RayCastHit;
-        Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 1));
+        //Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 1)); //Esto para las balas realistas
+        Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(0,0, 1));
         Debug.DrawRay(m_Camera.transform.position, direction * 100, Color.green, 5f);
 
         GameObject m_CurrentBullet = Instantiate(m_Bullet);
@@ -222,29 +224,30 @@ public class FFPlayerController : MonoBehaviour
             CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
             m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
             SetWeaponShootAnimation();
-            if (l_RayCastHit.collider.tag == "Target")
-            {
-                l_RayCastHit.transform.gameObject.SetActive(false);
-                GameController.m_GameController.HitDiana();
-
-            }
+            
+            //if (l_RayCastHit.collider.tag == "Target")
+            //{
+            //    l_RayCastHit.transform.gameObject.SetActive(false);
+            //    GameController.m_GameController.HitDiana();
+            //}
         }
 
         else
         {
+            SetWeaponShootAnimation();
             Vector3 dir = m_Camera.transform.position + direction * 10f;
             m_CurrentBullet.transform.LookAt(dir);
         }     
         
         m_Shooting = true;
         DecreaseAmmo();
-        Debug.Log(l_RayCastHit.collider.tag);
+        //Debug.Log(l_RayCastHit.collider.tag);
     }
 
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
     {
-        //Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
-        //GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
+        Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
+        GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
     }
 
     void SetIdleWeaponAnimation()
