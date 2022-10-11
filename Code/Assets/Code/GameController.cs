@@ -4,10 +4,9 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    static GameController m_GameController = null;
-    public GameObject m_Player;
+    public static GameController m_GameController = null;   
     float m_PlayerLife = 3f;
-    //float m_PlayerPoints;
+    int m_PlayerPoints = 0;
     int m_CurrentAmmo = 30;
 
     private void Start()
@@ -30,11 +29,11 @@ public class GameController : MonoBehaviour
             GameObject.Destroy(m_GameController.gameObject);
         m_GameController = null;
     }
-    public void SetPlayerLife(float PlayerLife)
+    public void SetPlayerLifes(float PlayerLife)
     {
         m_PlayerLife = PlayerLife;
     }
-    public float SetPlayerLife()
+    public float GetPlayerLifes()
     {
         return m_PlayerLife;
     }
@@ -43,10 +42,20 @@ public class GameController : MonoBehaviour
     {
         m_CurrentAmmo = CurrentAmmo;
     }
-    public int SetCurrentAmmo()
+    public int GetCurrentAmmo()
     {
         return m_CurrentAmmo;
     }
+    public void SetPoints(int PlayerPoints)
+    {
+        m_PlayerPoints = PlayerPoints;
+    }
+    public int GetPoints()
+    {
+        return m_PlayerPoints;
+    }
+
+
 
 
 }

@@ -3,7 +3,7 @@
 public class Bullet: MonoBehaviour
 {
     public float m_Speed = 5.0f;
-    public float lifeDuration = 2f;
+    public float lifeDuration = 3f;
     float lifeTimer;
 
     private void Start()
@@ -16,7 +16,7 @@ public class Bullet: MonoBehaviour
         lifeTimer -= Time.deltaTime;
         if(lifeTimer <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

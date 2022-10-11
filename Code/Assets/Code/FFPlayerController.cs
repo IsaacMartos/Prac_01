@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class FFPlayerController : MonoBehaviour
@@ -32,7 +33,6 @@ public class FFPlayerController : MonoBehaviour
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
 
-
     float m_VerticalSpeed = 0.0f;
     bool m_OnGround = true;
 
@@ -55,7 +55,6 @@ public class FFPlayerController : MonoBehaviour
     public int m_MaxAmmo;
     public int m_AmmoCapacity;
     int m_CurrentAmmo;
-    public TextMeshProUGUI m_CurrentAmmoText;
 
     [Header("Animations")]
     public Animation m_Animations;
@@ -64,12 +63,20 @@ public class FFPlayerController : MonoBehaviour
     public AnimationClip m_ReloadAnimationClip;
     private bool m_Shooting = false;
 
-    float m_Life;
+    [Header("UI")]
+    public TextMeshProUGUI m_LifesText;
+    public TextMeshProUGUI m_PointsText;
+    public TextMeshProUGUI m_CurrentAmmoText;
+
+    float m_Lifes;
+    int m_Points;
 
     //añadir tiempo animaciones para no tener que hardcodearlo
     void Start()
     {
-        m_Life = GameController.GetGameController().SetPlayerLife();        
+        m_Lifes = GameController.GetGameController().GetPlayerLifes();
+        m_CurrentAmmo = GameController.GetGameController().GetCurrentAmmo();
+        m_Points = GameController.GetGameController().GetPoints();
         m_Yaw = transform.rotation.y;
         m_Pitch = m_PitchController.localRotation.x;
         Cursor.lockState = CursorLockMode.Locked;
@@ -107,7 +114,6 @@ public class FFPlayerController : MonoBehaviour
         Vector3 l_ForwardDirection = transform.forward;
         Vector3 l_Direction = Vector3.zero;
         float l_Speed = m_Speed;
-
 
         if (Input.GetKey(m_UpKeyCode))
             l_Direction = l_ForwardDirection;
@@ -164,7 +170,10 @@ public class FFPlayerController : MonoBehaviour
         else
             m_OnGround = false;
 
-        m_CurrentAmmoText.text = "Ammo: " + m_CurrentAmmo.ToString() + " / " + m_CurrentMaxAmmo.ToString();
+        m_CurrentAmmoText.text = "Ammo: " + m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        m_LifesText.text = "Lifes: " + GameController.m_GameController.GetPlayerLifes();
+        m_PointsText.text = "Your Points: " + GameController.m_GameController.GetPoints();
+                
 
         if (Input.GetMouseButtonDown(0) && CanShoot() && m_CurrentAmmo > 0)
         {
@@ -172,7 +181,7 @@ public class FFPlayerController : MonoBehaviour
             Debug.Log("Shooting");
         }
 
-        //Debug.Log(m_CurrentAmmo + " current ammo ");
+        Debug.Log(m_CurrentAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
         if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity) 
@@ -271,7 +280,7 @@ public class FFPlayerController : MonoBehaviour
 
     public void DecreaseAmmo()
     {
-        m_CurrentAmmo--;
+        m_CurrentAmmo--;        
     }
 
     
