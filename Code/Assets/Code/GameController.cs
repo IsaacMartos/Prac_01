@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public static GameController m_GameController = null;   
     float m_PlayerLife = 3f;
     int m_PlayerPoints = 0;
+    int m_DianaPoints = 20;
     int m_CurrentAmmo = 30;
 
     private void Start()
@@ -52,6 +53,12 @@ public class GameController : MonoBehaviour
     }
     public int GetPoints()
     {
+        return m_PlayerPoints;
+    }
+
+    public int HitDiana()
+    {
+        m_PlayerPoints += m_DianaPoints;
         return m_PlayerPoints;
     }
 

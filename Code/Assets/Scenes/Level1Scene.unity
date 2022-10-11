@@ -1096,6 +1096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Diana01
       objectReference: {fileID: 0}
+    - target: {fileID: 140506, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
+      propertyPath: m_TagString
+      value: Target
+      objectReference: {fileID: 0}
     - target: {fileID: 438956, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1288,6 +1292,10 @@ PrefabInstance:
     - target: {fileID: 140506, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
       propertyPath: m_Name
       value: Diana02
+      objectReference: {fileID: 0}
+    - target: {fileID: 140506, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     - target: {fileID: 438956, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
       propertyPath: m_RootOrder
@@ -2148,6 +2156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Diana04
       objectReference: {fileID: 0}
+    - target: {fileID: 140506, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
+      propertyPath: m_TagString
+      value: Target
+      objectReference: {fileID: 0}
     - target: {fileID: 438956, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2216,6 +2228,10 @@ PrefabInstance:
     - target: {fileID: 140506, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
       propertyPath: m_Name
       value: Diana03
+      objectReference: {fileID: 0}
+    - target: {fileID: 140506, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     - target: {fileID: 438956, guid: 84e2da24fceb32c45a3059b4c1d82538, type: 3}
       propertyPath: m_RootOrder

@@ -23,6 +23,6 @@ public class Bullet: MonoBehaviour
     private void FixedUpdate()
     {
         transform.position += transform.forward * m_Speed * Time.fixedDeltaTime;
-    }
+    }    
 
 }

@@ -178,7 +178,7 @@ public class FFPlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && CanShoot() && m_CurrentAmmo > 0)
         {
             Shoot();
-            Debug.Log("Shooting");
+            //Debug.Log("Shooting");
         }
 
         Debug.Log(m_CurrentAmmo + " current ammo ");
@@ -220,6 +220,12 @@ public class FFPlayerController : MonoBehaviour
             CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
             m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
             SetWeaponShootAnimation();
+            if (l_RayCastHit.collider.tag == "Target")
+            {
+                l_RayCastHit.transform.gameObject.SetActive(false);
+                GameController.m_GameController.HitDiana();
+
+            }
         }
 
         else
@@ -230,7 +236,7 @@ public class FFPlayerController : MonoBehaviour
         
         m_Shooting = true;
         DecreaseAmmo();
-        //Debug.Log(l_RayCastHit.collider);
+        Debug.Log(l_RayCastHit.collider.tag);
     }
 
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
