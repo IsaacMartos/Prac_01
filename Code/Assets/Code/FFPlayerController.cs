@@ -67,6 +67,7 @@ public class FFPlayerController : MonoBehaviour
     public TextMeshProUGUI m_LifesText;
     public TextMeshProUGUI m_PointsText;
     public TextMeshProUGUI m_CurrentAmmoText;
+    public TextMeshProUGUI m_MaxAmmoText;
 
     float m_Lifes;
     int m_Points;
@@ -170,7 +171,8 @@ public class FFPlayerController : MonoBehaviour
         else
             m_OnGround = false;
 
-        m_CurrentAmmoText.text = "Ammo: " + m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        m_CurrentAmmoText.text = m_CurrentAmmo.ToString();  
+        m_MaxAmmoText.text = m_CurrentMaxAmmo.ToString();
         m_LifesText.text = "Lifes: " + GameController.m_GameController.GetPlayerLifes();
         m_PointsText.text = "Your Points: " + GameController.m_GameController.GetPoints();
                 
