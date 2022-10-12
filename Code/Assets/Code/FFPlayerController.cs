@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class FFPlayerController : MonoBehaviour
 {
@@ -30,6 +32,8 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
     public KeyCode m_ReloadKeyCode = KeyCode.R;
+    public KeyCode m_RestartKeyCode = KeyCode.Return;
+    public KeyCode m_NextLevelKeyCode = KeyCode.Return;
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
 
@@ -199,6 +203,11 @@ public class FFPlayerController : MonoBehaviour
         {            
             StartCoroutine(Reload());
             SetReloadAnimation();
+        }
+
+        if(Input.GetKeyDown(m_NextLevelKeyCode) && GameController.m_GameController.GetPoints() > 50)
+        {
+            SceneManager.LoadScene("Level2Scene");
         }
 
     }
