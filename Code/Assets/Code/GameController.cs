@@ -5,7 +5,8 @@ using TMPro;
 public class GameController : MonoBehaviour
 {
     public static GameController m_GameController = null;   
-    float m_PlayerLife = 3f;
+    float m_PlayerLife = 100f;
+    float m_PlayerShield = 100f;
     int m_PlayerPoints = 0;
     int m_EasyDianaPoints = 10;
     int m_DianaPoints = 20;
@@ -39,6 +40,14 @@ public class GameController : MonoBehaviour
     public float GetPlayerLifes()
     {
         return m_PlayerLife;
+    }
+    public void SetPlayerShield(float PlayerShield)
+    {
+        m_PlayerShield = PlayerShield;
+    }
+    public float GetPlayerShield()
+    {
+        return m_PlayerShield;
     }
 
     public void SetCurrentAmmo(int CurrentAmmo)

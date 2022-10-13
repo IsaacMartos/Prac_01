@@ -32,8 +32,9 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
     public KeyCode m_ReloadKeyCode = KeyCode.R;
-    public KeyCode m_RestartKeyCode = KeyCode.Return;
+    public KeyCode m_RestartKeyCode = KeyCode.Escape;
     public KeyCode m_NextLevelKeyCode = KeyCode.Return;
+    public KeyCode m_PruebaVida = KeyCode.H;
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
 
@@ -70,17 +71,20 @@ public class FFPlayerController : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI m_LifesText;
+    public TextMeshProUGUI m_ShieldText;
     public TextMeshProUGUI m_PointsText;
     public TextMeshProUGUI m_CurrentAmmoText;
     public TextMeshProUGUI m_MaxAmmoText;
 
     float m_Lifes;
-    int m_Points;
+    float m_Points;
+    float m_Shield;
 
     //añadir tiempo animaciones para no tener que hardcodearlo
     void Start()
     {
         m_Lifes = GameController.GetGameController().GetPlayerLifes();
+        m_Shield = GameController.GetGameController().GetPlayerShield();
         m_CurrentAmmo = GameController.GetGameController().GetCurrentAmmo();
         m_Points = GameController.GetGameController().GetPoints();
         m_Yaw = transform.rotation.y;
@@ -178,15 +182,23 @@ public class FFPlayerController : MonoBehaviour
 
         m_CurrentAmmoText.text = m_CurrentAmmo.ToString();  
         m_MaxAmmoText.text = m_CurrentMaxAmmo.ToString();
+        m_ShieldText.text = m_Shield.ToString();
         m_LifesText.text = "Lifes: " + GameController.m_GameController.GetPlayerLifes();
         m_PointsText.text = "Your Points: " + GameController.m_GameController.GetPoints();
+        m_ShieldText.text = "Shield: " + GameController.m_GameController.GetPlayerShield();
                 
 
         if (Input.GetMouseButtonDown(0) && m_CurrentAmmo > 0)
         {
-            Shoot();
+            Shoot();            
         }
 
+        if (Input.GetKeyDown(m_PruebaVida))
+        {
+            DecreaseShield();
+        }
+
+        Debug.Log(m_Shield);
         //Debug.Log(m_CurrentAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
@@ -302,6 +314,11 @@ public class FFPlayerController : MonoBehaviour
     public void DecreaseAmmo()
     {
         m_CurrentAmmo--;        
+    }
+
+    public void DecreaseShield()
+    {
+        m_Shield -= 25f;
     }
 
     
