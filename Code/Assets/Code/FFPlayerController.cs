@@ -94,6 +94,7 @@ public class FFPlayerController : MonoBehaviour
         SetIdleWeaponAnimation();
         m_CurrentAmmo = m_AmmoCapacity;
         m_CurrentMaxAmmo = m_MaxAmmo;
+        
 
     }
 #if UNITY_EDITOR
@@ -188,17 +189,17 @@ public class FFPlayerController : MonoBehaviour
         m_ShieldText.text = "Shield: " + GameController.m_GameController.GetPlayerShield();
                 
 
-        if (Input.GetMouseButtonDown(0) && m_CurrentAmmo > 0)
+        if (Input.GetMouseButton(0) && m_CurrentAmmo > 0 && CanShoot())
         {
             Shoot();            
         }
-
+                
         if (Input.GetKeyDown(m_PruebaVida))
         {
             DecreaseShield();
         }
 
-        Debug.Log(m_Shield);
+        //Debug.Log(m_Shield);
         //Debug.Log(m_CurrentAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
@@ -211,13 +212,18 @@ public class FFPlayerController : MonoBehaviour
             }
             
         }
+
         if (m_CurrentAmmo == 0)
-        {            
-            StartCoroutine(Reload());
+        {
             SetReloadAnimation();
+            StartCoroutine(Reload());
+            if(m_CurrentMaxAmmo == 0)
+            {
+                SetIdleWeaponAnimation();
+            }
         }
 
-        if(Input.GetKeyDown(m_NextLevelKeyCode) && GameController.m_GameController.GetPoints() > 50)
+        if (Input.GetKeyDown(m_NextLevelKeyCode) && GameController.m_GameController.GetPoints() > 50)
         {
             SceneManager.LoadScene("Level2Scene");
         }

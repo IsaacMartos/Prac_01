@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class DroneEnemy : MonoBehaviour
 {
-	public enum TStatet
+	public enum TState
 	{
 		IDEL,
 		PATROL,
@@ -16,7 +16,7 @@ public class DroneEnemy : MonoBehaviour
 		HIT,
 		DIE
 	}
-	public TStatet m_Statet;
+	public TState m_State;
 	NavMeshAgent m_NavMeshAgent;
 	public List<Transform> m_PatrolTargets;
 	int m_CurrentPatrolTargetId = 0;
@@ -40,27 +40,27 @@ public class DroneEnemy : MonoBehaviour
 
 	void Update()
 	{
-		switch (m_Statet)
+		switch (m_State)
 		{
-			case TStatet.IDEL:
+			case TState.IDEL:
 				UpdateIdelState();
 				break;
-			case TStatet.PATROL:
+			case TState.PATROL:
 				UpdatePatrolState();
 				break;
-			case TStatet.ALERT:
+			case TState.ALERT:
 				UpdateAlertState();
 				break;
-			case TStatet.CHASE:
+			case TState.CHASE:
 				UpdateChaseState();
 				break;
-			case TStatet.ATTACK:
+			case TState.ATTACK:
 				UpdateAttackState();
 				break;
-			case TStatet.HIT:
+			case TState.HIT:
 				UpdateHitState();
 				break;
-			case TStatet.DIE:
+			case TState.DIE:
 				UpdateDieState();
 				break;
 		}
@@ -72,7 +72,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetIdelState()
 	{
-		m_Statet = TStatet.IDEL;
+		m_State = TState.IDEL;
 	}
 	void UpdateIdelState()
 	{
@@ -80,7 +80,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetPatrolState()
 	{
-		m_Statet = TStatet.PATROL;
+		m_State = TState.PATROL;
 		m_NavMeshAgent.destination = m_PatrolTargets[m_CurrentPatrolTargetId].position;
 	}
 	void UpdatePatrolState()
@@ -136,7 +136,7 @@ public class DroneEnemy : MonoBehaviour
 
 	void SetAlertState()
 	{
-		m_Statet = TStatet.ALERT;
+		m_State = TState.ALERT;
 	}
 	void UpdateAlertState()
 	{
@@ -144,7 +144,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetChaseState()
 	{
-		m_Statet = TStatet.CHASE;
+		m_State = TState.CHASE;
 	}
 	void UpdateChaseState()
 	{
@@ -152,7 +152,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetAttackState()
 	{
-		m_Statet = TStatet.ATTACK;
+		m_State = TState.ATTACK;
 	}
 	void UpdateAttackState()
 	{
@@ -160,7 +160,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetHitState()
 	{
-		m_Statet = TStatet.HIT;
+		m_State = TState.HIT;
 	}
 	void UpdateHitState()
 	{
@@ -168,7 +168,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetDieState()
 	{
-		m_Statet = TStatet.DIE;
+		m_State = TState.DIE;
 	}
 	void UpdateDieState()
 	{

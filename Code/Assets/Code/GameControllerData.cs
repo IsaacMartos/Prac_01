@@ -4,4 +4,5 @@
 public class GameControllerData : ScriptableObject
 {
 	public float m_Lifes;
+	
 }
