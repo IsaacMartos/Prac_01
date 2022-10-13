@@ -4,7 +4,8 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController m_GameController = null;   
+    public static GameController m_GameController = null;
+    private FFPlayerController m_Player;
     float m_PlayerLife = 100f;
     float m_PlayerShield = 100f;
     int m_PlayerPoints = 0;
@@ -41,6 +42,17 @@ public class GameController : MonoBehaviour
     {
         return m_PlayerLife;
     }
+
+    public FFPlayerController GetPlayer()
+	{
+        return m_Player;
+	}
+
+    public void SetPlayer(FFPlayerController Player)
+	{
+        m_Player = Player;
+	}
+
     public void SetPlayerShield(float PlayerShield)
     {
         m_PlayerShield = PlayerShield;

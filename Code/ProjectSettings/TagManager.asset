@@ -19,11 +19,12 @@ TagManager:
   - NDiana
   - EDiana
   - DDiana
+  - DroneCollider
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

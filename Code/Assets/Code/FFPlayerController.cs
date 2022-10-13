@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
-
 public class FFPlayerController : MonoBehaviour
 {
     float m_Yaw;
@@ -76,14 +75,15 @@ public class FFPlayerController : MonoBehaviour
     public TextMeshProUGUI m_CurrentAmmoText;
     public TextMeshProUGUI m_MaxAmmoText;
 
-    float m_Lifes;
+    float m_Life;
     float m_Points;
     float m_Shield;
 
     //añadir tiempo animaciones para no tener que hardcodearlo
     void Start()
     {
-        m_Lifes = GameController.GetGameController().GetPlayerLifes();
+        m_Life = GameController.GetGameController().GetPlayerLifes();
+        GameController.GetGameController().SetPlayer(this);
         m_Shield = GameController.GetGameController().GetPlayerShield();
         m_CurrentAmmo = GameController.GetGameController().GetCurrentAmmo();
         m_Points = GameController.GetGameController().GetPoints();
@@ -242,6 +242,8 @@ public class FFPlayerController : MonoBehaviour
 
         if (Physics.Raycast(l_Ray, out l_RayCastHit, m_MaxShootDistance, m_ShootinLayerMask.value))
         {
+            if (l_RayCastHit.collider.tag == "DroneCollider")
+                l_RayCastHit.collider.GetComponent<HitCollider>().Hit();            
             CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
             m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
             SetWeaponShootAnimation();
@@ -321,5 +323,22 @@ public class FFPlayerController : MonoBehaviour
         m_Shield -= 25f;
     }
 
-    
+    public float GetLife()
+	{
+        return m_Life;
+	}
+
+    public void AddLife(float Life)
+	{
+        m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 1.0f);
+	}
+
+	public void OnTriggerEnter(Collider other)
+	{
+        if (other.tag == "Item")
+            other.GetComponent<Item>().Pick(this);
+        Debug.Log(m_Life);
+	}
+
+
 }
