@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,9 @@ public class DroneEnemy : MonoBehaviour
 	public LayerMask m_SightLayerMask;
 	public float m_EyesHeight = 1.8f;
 	public float m_EyesPlayerHeight = 1.8f;
+	public float m_RotationSpeed = 3f;
+    public float m_DroneSpeed = 3f;
+    public float m_DroneShootingRange = 4f;
 
 	private void Awake()
 	{
@@ -85,16 +89,16 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdatePatrolState()
 	{
-		if (PatrolTargetPositioArrive())
-			MoveToNextPatrolPositio();
-		if (HearsPalyer())
+		if (PatrolTargetPositionArrive())
+			MoveToNextPatrolPosition();
+		if (HearsPlayer())
 		{
 			SetAlertState();
-			Debug.Log("pillao");
+            Debug.Log("pillao");
 		}
 
 	}
-	bool HearsPalyer()
+	bool HearsPlayer()
 	{
 		Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 		return Vector3.Distance(l_PlayerPosition, transform.position) <= m_HearRangerDistance;
@@ -121,7 +125,7 @@ public class DroneEnemy : MonoBehaviour
 			&& !Physics.Raycast(l_Ray, l_Lenght, m_SightLayerMask.value);
 	}
 
-	void MoveToNextPatrolPositio()
+	void MoveToNextPatrolPosition()
 	{
 		++m_CurrentPatrolTargetId;
 		if (m_CurrentPatrolTargetId >= m_PatrolTargets.Count)
@@ -129,7 +133,7 @@ public class DroneEnemy : MonoBehaviour
 		m_NavMeshAgent.destination = m_PatrolTargets[m_CurrentPatrolTargetId].position;
 	}
 
-	bool PatrolTargetPositioArrive()
+	bool PatrolTargetPositionArrive()
 	{
 		return !m_NavMeshAgent.hasPath && !m_NavMeshAgent.pathPending && m_NavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete;
 	}
@@ -140,16 +144,25 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateAlertState()
 	{
-
+        gameObject.transform.Rotate(Vector3.up * m_RotationSpeed * Time.deltaTime);
+		if (SeesPlayer())
+		{
+			SetChaseState();
+		}        				
 	}
+
 	void SetChaseState()
 	{
 		m_State = TState.CHASE;
 	}
 	void UpdateChaseState()
 	{
-
-	}
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
+		var step = m_DroneSpeed * Time.deltaTime;
+		transform.position = Vector3.MoveTowards(transform.position,l_PlayerPosition, step);
+		transform.LookAt(l_PlayerPosition);
+    }
+	
 	void SetAttackState()
 	{
 		m_State = TState.ATTACK;
