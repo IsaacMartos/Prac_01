@@ -31,19 +31,16 @@ public class Bullet: MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             GameController.m_GameController.HitEasyDiana();
-            gameObject.transform.SetParent(collision.transform);
         }
         if (collision.gameObject.tag == "NDiana")
         {
             collision.gameObject.SetActive(false);
             GameController.m_GameController.HitNormalDiana();
-            gameObject.transform.SetParent(collision.transform);
         }
         if (collision.gameObject.tag == "DDiana")
         {
             collision.gameObject.SetActive(false);
             GameController.m_GameController.HitHardDiana();
-            gameObject.transform.SetParent(collision.transform);
         }
     }
 
