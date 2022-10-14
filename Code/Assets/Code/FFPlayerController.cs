@@ -249,8 +249,12 @@ public class FFPlayerController : MonoBehaviour
         if (Physics.Raycast(l_Ray, out l_RayCastHit, m_MaxShootDistance, m_ShootinLayerMask.value))
         {
             if (l_RayCastHit.collider.tag == "DroneCollider")
-                l_RayCastHit.collider.GetComponent<HitCollider>().Hit();            
-            CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
+                l_RayCastHit.collider.GetComponent<HitCollider>().Hit();
+
+            if(l_RayCastHit.collider.tag != ("EDiana") || l_RayCastHit.collider.tag == ("DDiana") || l_RayCastHit.collider.tag == ("NDiana"))
+            {
+                CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
+            }            
             m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
             SetWeaponShootAnimation();
             
@@ -276,7 +280,7 @@ public class FFPlayerController : MonoBehaviour
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
     {
         Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
-        GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
+        GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));        
     }
 
     void SetIdleWeaponAnimation()
