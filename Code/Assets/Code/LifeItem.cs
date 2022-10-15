@@ -11,7 +11,7 @@ public class LifeItem : Item
 		{
 			Player.AddLife(m_Life);
 			gameObject.SetActive(false);
-			//Debug.log("mas vida");
+			//Debug.Log("mas vida");
 		}
 	}
 }

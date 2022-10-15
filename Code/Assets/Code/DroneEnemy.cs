@@ -158,8 +158,9 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateChaseState()
 	{
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-		
-		if(Vector3.Distance(l_PlayerPosition,transform.position) < m_MaxChaseDistance)
+		//Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
+
+        if (Vector3.Distance(l_PlayerPosition,transform.position) < m_MaxChaseDistance)
 		{
             Vector3 dirToPlayer = transform.position - l_PlayerPosition;
             Vector3 newPos = transform.position - dirToPlayer;
@@ -188,7 +189,7 @@ public class DroneEnemy : MonoBehaviour
 
         if (Vector3.Distance(l_PlayerPosition, transform.position) < m_DroneShootingRange)
         {
-			Debug.Log("Shooting");
+			//Debug.Log("Shooting");
         }
 		else
 		{

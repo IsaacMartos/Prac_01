@@ -20,6 +20,7 @@ TagManager:
   - EDiana
   - DDiana
   - DroneCollider
+  - Item
   layers:
   - Default
   - TransparentFX
