@@ -30,6 +30,7 @@ public class DroneEnemy : MonoBehaviour
 	public float m_EyesPlayerHeight = 1.8f;
 	public float m_RotationSpeed = 3f;
     public float m_DroneSpeed = 3f;
+    public float m_DroneMinimumRange = 4f;
     public float m_DroneShootingRange = 4f;
 	public float m_MaxChaseDistance = 50f;
 
@@ -96,7 +97,7 @@ public class DroneEnemy : MonoBehaviour
 		if (HearsPlayer())
 		{
 			SetAlertState();
-            Debug.Log("pillao");
+            //Debug.Log("pillao");
 		}
 
 	}
@@ -157,7 +158,6 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateChaseState()
 	{
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-		Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
 		
 		if(Vector3.Distance(l_PlayerPosition,transform.position) < m_MaxChaseDistance)
 		{
@@ -166,6 +166,11 @@ public class DroneEnemy : MonoBehaviour
             m_NavMeshAgent.SetDestination(newPos);
             transform.LookAt(l_PlayerPosition);
         }
+
+		if(Vector3.Distance(l_PlayerPosition, transform.position) < m_DroneMinimumRange)
+		{
+			SetAttackState();
+		}
 
 		else
 		{
@@ -179,15 +184,25 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateAttackState()
 	{
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 
-	}
+        if (Vector3.Distance(l_PlayerPosition, transform.position) < m_DroneShootingRange)
+        {
+			Debug.Log("Shooting");
+        }
+		else
+		{
+			SetChaseState();
+		}
+
+    }
 	void SetHitState()
 	{
 		m_State = TState.HIT;
 	}
 	void UpdateHitState()
 	{
-
+		SetAlertState();
 	}
 	void SetDieState()
 	{
@@ -209,9 +224,6 @@ public class DroneEnemy : MonoBehaviour
 		{
 			SetChaseState();
 		}
-		else
-		{
-			SetPatrolState();
-		}
+		
 	}
 }
