@@ -9,7 +9,7 @@ public class DroneEnemy : MonoBehaviour
 {
 	public enum TState
 	{
-		IDEL,
+		IDLE,
 		PATROL,
 		ALERT,
 		CHASE,
@@ -31,8 +31,10 @@ public class DroneEnemy : MonoBehaviour
 	public float m_RotationSpeed = 3f;
     public float m_DroneSpeed = 3f;
     public float m_DroneShootingRange = 4f;
+	public float m_MaxChaseDistance = 50f;
 
-	private void Awake()
+
+    private void Awake()
 	{
 		m_NavMeshAgent = GetComponent<NavMeshAgent>();
 	}
@@ -46,7 +48,7 @@ public class DroneEnemy : MonoBehaviour
 	{
 		switch (m_State)
 		{
-			case TState.IDEL:
+			case TState.IDLE:
 				UpdateIdelState();
 				break;
 			case TState.PATROL:
@@ -76,7 +78,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetIdelState()
 	{
-		m_State = TState.IDEL;
+		m_State = TState.IDLE;
 	}
 	void UpdateIdelState()
 	{
@@ -145,10 +147,7 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateAlertState()
 	{
         gameObject.transform.Rotate(Vector3.up * m_RotationSpeed * Time.deltaTime);
-		if (SeesPlayer())
-		{
-			SetChaseState();
-		}        				
+		StartCoroutine(StartSeeingPlayer());     				
 	}
 
 	void SetChaseState()
@@ -158,9 +157,20 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateChaseState()
 	{
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-		var step = m_DroneSpeed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position,l_PlayerPosition, step);
-		transform.LookAt(l_PlayerPosition);
+		Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
+		
+		if(Vector3.Distance(l_PlayerPosition,transform.position) < m_MaxChaseDistance)
+		{
+            Vector3 dirToPlayer = transform.position - l_PlayerPosition;
+            Vector3 newPos = transform.position - dirToPlayer;
+            m_NavMeshAgent.SetDestination(newPos);
+            transform.LookAt(l_PlayerPosition);
+        }
+
+		else
+		{
+			SetPatrolState();
+		}
     }
 	
 	void SetAttackState()
@@ -190,5 +200,18 @@ public class DroneEnemy : MonoBehaviour
 	public void Hit(float life)
 	{
 		Debug.Log("hit life" + life);
+	}
+
+	IEnumerator StartSeeingPlayer()
+	{
+		yield return new WaitForSeconds(2.0f);
+		if (SeesPlayer())
+		{
+			SetChaseState();
+		}
+		else
+		{
+			SetPatrolState();
+		}
 	}
 }
