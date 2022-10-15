@@ -184,9 +184,9 @@ public class FFPlayerController : MonoBehaviour
         m_CurrentAmmoText.text = m_CurrentAmmo.ToString();  
         m_MaxAmmoText.text = m_CurrentMaxAmmo.ToString();
         m_ShieldText.text = m_Shield.ToString();
-        m_LifesText.text = "Lifes: " + GameController.m_GameController.GetPlayerLifes();
-        m_PointsText.text = "Your Points: " + GameController.m_GameController.GetPoints();
-        m_ShieldText.text = "Shield: " + GameController.m_GameController.GetPlayerShield();
+        m_LifesText.text = "Lifes: " + m_Life;
+        m_PointsText.text = "Your Points: " + GameController.GetGameController().GetPoints();
+        m_ShieldText.text = "Shield: " + m_Shield;
                 
 
         if (Input.GetMouseButton(0) && m_CurrentAmmo > 0 && CanShoot())
@@ -340,7 +340,7 @@ public class FFPlayerController : MonoBehaviour
 
     public void AddLife(float Life)
 	{
-        m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 1.0f);
+        m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 150.0f);
 	}
 
 	public void OnTriggerEnter(Collider other)

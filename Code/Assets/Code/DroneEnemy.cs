@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +9,7 @@ public class DroneEnemy : MonoBehaviour
 {
 	public enum TState
 	{
-		IDEL,
+		IDLE,
 		PATROL,
 		ALERT,
 		CHASE,
@@ -27,8 +28,14 @@ public class DroneEnemy : MonoBehaviour
 	public LayerMask m_SightLayerMask;
 	public float m_EyesHeight = 1.8f;
 	public float m_EyesPlayerHeight = 1.8f;
+	public float m_RotationSpeed = 3f;
+    public float m_DroneSpeed = 3f;
+    public float m_DroneMinimumRange = 4f;
+    public float m_DroneShootingRange = 4f;
+	public float m_MaxChaseDistance = 50f;
 
-	private void Awake()
+
+    private void Awake()
 	{
 		m_NavMeshAgent = GetComponent<NavMeshAgent>();
 	}
@@ -42,7 +49,7 @@ public class DroneEnemy : MonoBehaviour
 	{
 		switch (m_State)
 		{
-			case TState.IDEL:
+			case TState.IDLE:
 				UpdateIdelState();
 				break;
 			case TState.PATROL:
@@ -72,7 +79,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void SetIdelState()
 	{
-		m_State = TState.IDEL;
+		m_State = TState.IDLE;
 	}
 	void UpdateIdelState()
 	{
@@ -85,16 +92,16 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdatePatrolState()
 	{
-		if (PatrolTargetPositioArrive())
-			MoveToNextPatrolPositio();
-		if (HearsPalyer())
+		if (PatrolTargetPositionArrive())
+			MoveToNextPatrolPosition();
+		if (HearsPlayer())
 		{
 			SetAlertState();
-			Debug.Log("pillao");
+            //Debug.Log("pillao");
 		}
 
 	}
-	bool HearsPalyer()
+	bool HearsPlayer()
 	{
 		Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 		return Vector3.Distance(l_PlayerPosition, transform.position) <= m_HearRangerDistance;
@@ -121,7 +128,7 @@ public class DroneEnemy : MonoBehaviour
 			&& !Physics.Raycast(l_Ray, l_Lenght, m_SightLayerMask.value);
 	}
 
-	void MoveToNextPatrolPositio()
+	void MoveToNextPatrolPosition()
 	{
 		++m_CurrentPatrolTargetId;
 		if (m_CurrentPatrolTargetId >= m_PatrolTargets.Count)
@@ -129,7 +136,7 @@ public class DroneEnemy : MonoBehaviour
 		m_NavMeshAgent.destination = m_PatrolTargets[m_CurrentPatrolTargetId].position;
 	}
 
-	bool PatrolTargetPositioArrive()
+	bool PatrolTargetPositionArrive()
 	{
 		return !m_NavMeshAgent.hasPath && !m_NavMeshAgent.pathPending && m_NavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete;
 	}
@@ -140,31 +147,63 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateAlertState()
 	{
-
+        gameObject.transform.Rotate(Vector3.up * m_RotationSpeed * Time.deltaTime);
+		StartCoroutine(StartSeeingPlayer());     				
 	}
+
 	void SetChaseState()
 	{
 		m_State = TState.CHASE;
 	}
 	void UpdateChaseState()
 	{
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
+		//Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
 
-	}
+        if (Vector3.Distance(l_PlayerPosition,transform.position) < m_MaxChaseDistance)
+		{
+            Vector3 dirToPlayer = transform.position - l_PlayerPosition;
+            Vector3 newPos = transform.position - dirToPlayer;
+            m_NavMeshAgent.SetDestination(newPos);
+            transform.LookAt(l_PlayerPosition);
+        }
+
+		if(Vector3.Distance(l_PlayerPosition, transform.position) < m_DroneMinimumRange)
+		{
+			SetAttackState();
+		}
+
+		else
+		{
+			SetPatrolState();
+		}
+    }
+	
 	void SetAttackState()
 	{
 		m_State = TState.ATTACK;
 	}
 	void UpdateAttackState()
 	{
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 
-	}
+        if (Vector3.Distance(l_PlayerPosition, transform.position) < m_DroneShootingRange)
+        {
+			//Debug.Log("Shooting");
+        }
+		else
+		{
+			SetChaseState();
+		}
+
+    }
 	void SetHitState()
 	{
 		m_State = TState.HIT;
 	}
 	void UpdateHitState()
 	{
-
+		SetAlertState();
 	}
 	void SetDieState()
 	{
@@ -177,5 +216,15 @@ public class DroneEnemy : MonoBehaviour
 	public void Hit(float life)
 	{
 		Debug.Log("hit life" + life);
+	}
+
+	IEnumerator StartSeeingPlayer()
+	{
+		yield return new WaitForSeconds(2.0f);
+		if (SeesPlayer())
+		{
+			SetChaseState();
+		}
+		
 	}
 }
