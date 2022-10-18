@@ -38,7 +38,7 @@ public class DoorController : MonoBehaviour
 	{
         m_Animation.CrossFade(m_DoorOpening.name, 0.1f);
         m_Animation.CrossFadeQueued(m_DoorClosing.name, 0.1f);
-        StartCoroutine(StopDoor());
+        //StartCoroutine(StopDoor());
     }
 
     void SetCloseDoorAnimation()
@@ -52,11 +52,9 @@ public class DoorController : MonoBehaviour
         m_Animation.CrossFade(m_DoorClose.name, 0.1f);
     }
 
-    IEnumerator StopDoor()
-    {
-        yield return new WaitForSeconds(m_DoorOpen.length);
-        m_Animation.Stop(m_DoorOpening.name);
-    }
-
-
+    //IEnumerator StopDoor()
+    //{
+    //    yield return new WaitForSeconds(m_DoorOpen.length);
+    //    m_Animation.Stop(m_DoorOpening.name);
+    //}
 }
