@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.6880877, g: 0.71001136, b: 0.66009533, a: 1}
+  m_IndirectSpecularColor: {r: 0.6880887, g: 0.71001226, b: 0.66009563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1895,6 +1895,11 @@ PrefabInstance:
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_DroneSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_DroneDamage
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
@@ -1905,7 +1910,7 @@ PrefabInstance:
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_MaxChaseDistance
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
@@ -2000,7 +2005,12 @@ PrefabInstance:
     - target: {fileID: 2279219330596241350, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219331579064292, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_Life
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c268d1dc1f873644b924977f1d9a9a04, type: 3}
@@ -3472,6 +3482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6185937851196024409, guid: ea51da4cf1acfea49802848e749a5a13,
         type: 3}
+      propertyPath: m_TagString
+      value: PointsDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185937851196024409, guid: ea51da4cf1acfea49802848e749a5a13,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -3541,6 +3556,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: 7c0a200f29d63ea4489e4b6d3045c20e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: 57ac91ffb12bf514ab0f9eea610fc157, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 153f89109de5e9142b5d6745510a3e3a, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!114 &1903971224 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5676773393254485153, guid: cf587b7325be7814aad37ecbb758a713,

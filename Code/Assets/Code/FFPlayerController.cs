@@ -356,6 +356,11 @@ public class FFPlayerController : MonoBehaviour
         m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 150.0f);
 	}
 
+    public void GetHitDrone(float damage)
+    {
+        m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 150.0f);
+    }
+
 	public void OnTriggerEnter(Collider other)
 	{
         if (other.tag == "Item")
@@ -363,5 +368,6 @@ public class FFPlayerController : MonoBehaviour
         Debug.Log(m_Life);
 	}
 
+   
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DoorController : MonoBehaviour
     public AnimationClip m_DoorClose;
     public AnimationClip m_DoorClosing;
     public AnimationClip m_DoorOpening;
+    public int m_DoorOpenPoints = 100;
 
     void Start()
     {
@@ -20,11 +22,24 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-        if (DetectionPlayer())
+        if (DetectionPlayer() && gameObject.tag == "NormalDoor")
+        {
             SetOpenDoorAnamation();
+            
+        }
+
+        if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
+        {
+            SetOpenDoorAnamation();
+        }
+
         else
             SetCloseDoorAnimation();
         //Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    SceneManager.LoadScene("Level2Scene");
+        //}
 
     }
 
@@ -52,9 +67,15 @@ public class DoorController : MonoBehaviour
         m_Animation.CrossFade(m_DoorClose.name, 0.1f);
     }
 
+    void SetOpenAnimationDoor()
+    {
+        m_Animation.CrossFade(m_DoorOpen.name, 0.1f);
+    }
+
     //IEnumerator StopDoor()
     //{
     //    yield return new WaitForSeconds(m_DoorOpen.length);
     //    m_Animation.Stop(m_DoorOpening.name);
     //}
+    
 }

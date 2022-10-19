@@ -21,6 +21,9 @@ TagManager:
   - DDiana
   - DroneCollider
   - Item
+  - NormalDoor
+  - PointsDoor
+  - KeyDoor
   layers:
   - Default
   - TransparentFX
