@@ -243,33 +243,44 @@ public class FFPlayerController : MonoBehaviour
         Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(0,0, 1));
         Debug.DrawRay(m_Camera.transform.position, direction * 100, Color.green, 5f);
 
-        GameObject m_CurrentBullet = Instantiate(m_Bullet);
-        m_CurrentBullet.transform.position = m_BulletSpawn.position;        
+        //GameObject m_CurrentBullet = Instantiate(m_Bullet);
+        //m_CurrentBullet.transform.position = m_BulletSpawn.position;        
 
         if (Physics.Raycast(l_Ray, out l_RayCastHit, m_MaxShootDistance, m_ShootinLayerMask.value))
         {
             if (l_RayCastHit.collider.tag == "DroneCollider")
                 l_RayCastHit.collider.GetComponent<HitCollider>().Hit();
 
-            if(l_RayCastHit.collider.tag != ("EDiana") || l_RayCastHit.collider.tag == ("DDiana") || l_RayCastHit.collider.tag == ("NDiana"))
+            if(l_RayCastHit.collider.tag != ("EDiana") || l_RayCastHit.collider.tag != ("DDiana") || l_RayCastHit.collider.tag != ("NDiana"))
             {
                 CreateShootingParticles(l_RayCastHit.collider, l_RayCastHit.point, l_RayCastHit.normal);
-            }            
-            m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
+            } 
+            
+            //m_CurrentBullet.transform.LookAt(l_RayCastHit.point);            
             SetWeaponShootAnimation();
             
-            //if (l_RayCastHit.collider.tag == "Target")
-            //{
-            //    l_RayCastHit.transform.gameObject.SetActive(false);
-            //    GameController.m_GameController.HitDiana();
-            //}
+            if (l_RayCastHit.collider.tag == "EDiana")
+            {
+                l_RayCastHit.transform.gameObject.SetActive(false);
+                GameController.m_GameController.HitEasyDiana();
+            }
+            if (l_RayCastHit.collider.tag == "NDiana")
+            {
+                l_RayCastHit.transform.gameObject.SetActive(false);
+                GameController.m_GameController.HitNormalDiana();
+            }
+            if (l_RayCastHit.collider.tag == "DDiana")
+            {
+                l_RayCastHit.transform.gameObject.SetActive(false);
+                GameController.m_GameController.HitHardDiana();
+            }
         }
 
         else
         {
             SetWeaponShootAnimation();
             Vector3 dir = m_Camera.transform.position + direction * 10f;
-            m_CurrentBullet.transform.LookAt(dir);
+            //m_CurrentBullet.transform.LookAt(dir);
         }     
         
         m_Shooting = true;
@@ -280,7 +291,9 @@ public class FFPlayerController : MonoBehaviour
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
     {
         Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
-        GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));        
+        GameObject m_CurrentDecal = Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
+        //GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
+        m_CurrentDecal.transform.SetParent(_Collider.gameObject.transform);
     }
 
     void SetIdleWeaponAnimation()
