@@ -73,8 +73,8 @@ MonoBehaviour:
   m_UseYawInverted: 0
   m_UsePitchInverted: 1
   m_CharacterController: {fileID: 9003879494279474557}
-  m_Speed: 7
-  m_FastSpeedMultiplier: 2
+  m_Speed: 6
+  m_FastSpeedMultiplier: 1.5
   m_LeftKeyCode: 97
   m_RightKeyCode: 100
   m_UpKeyCode: 119
