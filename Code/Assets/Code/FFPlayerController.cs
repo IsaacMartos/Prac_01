@@ -41,6 +41,7 @@ public class FFPlayerController : MonoBehaviour
 
     public float m_JumpSpeed = 10.0f;
 
+    public Transform m_LavaCheckpoint;
     //public GameObject m_DecalPrefab;
 
     [Header("Camera")]
@@ -95,7 +96,8 @@ public class FFPlayerController : MonoBehaviour
         SetIdleWeaponAnimation();
         m_CurrentAmmo = m_AmmoCapacity;
         m_CurrentMaxAmmo = m_MaxAmmo;
-
+        //m_LavaCheckpoint.rotation = transform.rotation;
+        //m_LavaCheckpoint.position = transform.position;
         m_DecalsPool = new TCOObjectPool(5, m_DecalPrefab);
     }
 #if UNITY_EDITOR
@@ -371,8 +373,27 @@ public class FFPlayerController : MonoBehaviour
         if (other.tag == "Item")
             other.GetComponent<Item>().Pick(this);
         Debug.Log(m_Life);
-	}
+        if (other.transform.tag == "DeadZone")
+        {
+            Kill();
+        }
+    }
 
-   
+    private void Kill()
+    {
+        m_Life = 0f;
+        GameController.GetGameController().RestartGame();
+    }
+
+    public void RestartGame()
+    {
+        m_Life = 100.0f;
+        m_CharacterController.enabled = false;
+        transform.position = m_LavaCheckpoint.position;
+        transform.rotation = m_LavaCheckpoint.rotation;
+        m_CharacterController.enabled = true;
+    }
+
+
 
 }
