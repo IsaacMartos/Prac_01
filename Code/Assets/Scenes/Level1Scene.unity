@@ -2267,6 +2267,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2279219330166614042, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_Life
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219330178286803, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_Life
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_DroneLifes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_DroneSpeed
@@ -2400,7 +2415,7 @@ PrefabInstance:
     - target: {fileID: 2279219331579064292, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_Life
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c268d1dc1f873644b924977f1d9a9a04, type: 3}
