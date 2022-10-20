@@ -85,7 +85,7 @@ public class DroneEnemy : MonoBehaviour
 			SetDieState();
 		}
 
-		Debug.Log(m_DroneLifes);
+		//Debug.Log(m_DroneLifes);
 	}
 	void SetIdelState()
 	{

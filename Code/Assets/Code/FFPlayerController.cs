@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -61,6 +60,8 @@ public class FFPlayerController : MonoBehaviour
     public int m_AmmoCapacity;
     int m_CurrentAmmo;
 
+    TCOObjectPool m_DecalsPool;
+
     [Header("Animations")]
     public Animation m_Animations;
     public AnimationClip m_ShootingAnimationClip;
@@ -82,8 +83,8 @@ public class FFPlayerController : MonoBehaviour
     //añadir tiempo animaciones para no tener que hardcodearlo
     void Start()
     {
-        m_Life = GameController.GetGameController().GetPlayerLifes();
         GameController.GetGameController().SetPlayer(this);
+        m_Life = GameController.GetGameController().GetPlayerLifes();
         m_Shield = GameController.GetGameController().GetPlayerShield();
         m_CurrentAmmo = GameController.GetGameController().GetCurrentAmmo();
         m_Points = GameController.GetGameController().GetPoints();
@@ -94,8 +95,8 @@ public class FFPlayerController : MonoBehaviour
         SetIdleWeaponAnimation();
         m_CurrentAmmo = m_AmmoCapacity;
         m_CurrentMaxAmmo = m_MaxAmmo;
-        
 
+        m_DecalsPool = new TCOObjectPool(5, m_DecalPrefab);
     }
 #if UNITY_EDITOR
     void UpdateInputDebug()
@@ -291,9 +292,13 @@ public class FFPlayerController : MonoBehaviour
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
     {
         Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
-        GameObject m_CurrentDecal = Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
+        //GameObject m_CurrentDecal = Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
         //GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
-        m_CurrentDecal.transform.SetParent(_Collider.gameObject.transform);
+        //m_CurrentDecal.transform.SetParent(_Collider.gameObject.transform);
+        GameObject l_Decal = m_DecalsPool.GetNextElement();
+        l_Decal.SetActive(true);
+        l_Decal.transform.position = Position;
+        l_Decal.transform.rotation = Quaternion.LookRotation(Normal);
     }
 
     void SetIdleWeaponAnimation()

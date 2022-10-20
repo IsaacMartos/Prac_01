@@ -3562,6 +3562,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &202817602
 Animation:
   m_ObjectHideFlags: 0
@@ -4333,6 +4334,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  m_DoorOpenPoints: 100
 --- !u!65 &236701163
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5329,6 +5331,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &326856840
 Animation:
   m_ObjectHideFlags: 0
@@ -5882,6 +5885,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &343717140
 Animation:
   m_ObjectHideFlags: 0
@@ -9222,6 +9226,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  m_DoorOpenPoints: 100
 --- !u!1001 &596616732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9457,6 +9462,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  m_DoorOpenPoints: 100
 --- !u!65 &624134133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11930,6 +11936,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &731928110
 Animation:
   m_ObjectHideFlags: 0
@@ -14504,16 +14511,16 @@ Transform:
   - {fileID: 1900442009}
   - {fileID: 1191378542}
   - {fileID: 2072234048}
-  - {fileID: 1472991348}
   - {fileID: 1943382216}
+  - {fileID: 1472991348}
   - {fileID: 1811519416}
   - {fileID: 1006881729}
   - {fileID: 1674233170}
   - {fileID: 1720895187}
   - {fileID: 706878324}
+  - {fileID: 1135135822}
   - {fileID: 1456511192}
   - {fileID: 313740419}
-  - {fileID: 1135135822}
   - {fileID: 1744322871}
   - {fileID: 865531258}
   - {fileID: 1265319641}
@@ -15450,6 +15457,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate_Small_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8875449794350654438, guid: b581fdbd127292d44ab21c4b16d91d05,
+        type: 3}
+      propertyPath: m_TagString
+      value: NormalDoor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}
 --- !u!4 &872692336 stripped
@@ -15784,6 +15796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gate_Small
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875449794350654438, guid: b581fdbd127292d44ab21c4b16d91d05,
+        type: 3}
+      propertyPath: m_TagString
+      value: NormalDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}
@@ -18425,7 +18442,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 811838434}
-  m_RootOrder: 41
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1135135823
 BoxCollider:
@@ -21229,6 +21246,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &1332752261
 Animation:
   m_ObjectHideFlags: 0
@@ -26211,6 +26229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sci Fi Gates
       objectReference: {fileID: 0}
+    - target: {fileID: 4972167997025983191, guid: 22d2c44fed4ffa743aac7afe4d993905,
+        type: 3}
+      propertyPath: m_TagString
+      value: NormalDoor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22d2c44fed4ffa743aac7afe4d993905, type: 3}
 --- !u!4 &1652740983 stripped
@@ -26243,6 +26266,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &1652740986
 Animation:
   m_ObjectHideFlags: 0
@@ -28815,6 +28839,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate_Small_2
       objectReference: {fileID: 0}
+    - target: {fileID: 8875449794350654438, guid: b581fdbd127292d44ab21c4b16d91d05,
+        type: 3}
+      propertyPath: m_TagString
+      value: NormalDoor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}
 --- !u!4 &1771517018 stripped
@@ -28847,6 +28876,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &1771517021
 Animation:
   m_ObjectHideFlags: 0
@@ -31279,7 +31309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 811838434}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1943382217
 BoxCollider:
@@ -32793,6 +32823,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &2049900482
 Animation:
   m_ObjectHideFlags: 0
@@ -33020,6 +33051,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  m_DoorOpenPoints: 100
 --- !u!65 &2068507285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33333,6 +33365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gate_Small_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875449794350654438, guid: b581fdbd127292d44ab21c4b16d91d05,
+        type: 3}
+      propertyPath: m_TagString
+      value: NormalDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b581fdbd127292d44ab21c4b16d91d05, type: 3}
@@ -33851,6 +33888,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &2082683604
 Animation:
   m_ObjectHideFlags: 0
@@ -34440,6 +34478,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  m_DoorOpenPoints: 100
 --- !u!111 &2118459484
 Animation:
   m_ObjectHideFlags: 0
