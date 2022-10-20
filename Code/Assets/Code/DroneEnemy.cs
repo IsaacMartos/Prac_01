@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class DroneEnemy : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class DroneEnemy : MonoBehaviour
 	public float m_DroneLifes = 3f;
 	public float m_DroneDamage = 15f;
 
+    public Image m_LifeBarImage;
+    public Transform m_LifeBarAnchorPosition;
+    public RectTransform m_LifeBarRectPosition;
 
     private void Awake()
 	{
@@ -79,6 +83,7 @@ public class DroneEnemy : MonoBehaviour
 		Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
 		Vector3 l_PlayerEyesPosition = l_PlayerPosition + Vector3.up * m_EyesPlayerHeight;
 		Debug.DrawLine(l_EyesPosition, l_PlayerEyesPosition, SeesPlayer() ? Color.red : Color.blue);
+		UpdateLifeBarPosition();
 
 		if(m_DroneLifes <= 0f)
 		{
@@ -224,12 +229,7 @@ public class DroneEnemy : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 	}
-	public void Hit(float life)
-	{
-		//Debug.Log("hit life" + life);
-		m_DroneLifes -= life;
-	}
-
+	
 	IEnumerator StartSeeingPlayer()
 	{
 		yield return new WaitForSeconds(2.0f);
@@ -240,10 +240,23 @@ public class DroneEnemy : MonoBehaviour
 		
 	}
 
-	//IEnumerator MakeDamagePlayer()
-	//{
-	//	yield return new WaitForSeconds(2.5f);
- //       GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
+    public void Hit(float life)
+    {
+        m_DroneLifes -= life;
+        m_LifeBarImage.fillAmount = m_DroneLifes;
+        Debug.Log("Hiit life" + life);
+    }
 
- //   }
+    void UpdateLifeBarPosition()
+    {
+        Vector3 l_Position = GameController.GetGameController().GetPlayer().m_Camera.WorldToViewportPoint(m_LifeBarAnchorPosition.position);
+        m_LifeBarRectPosition.anchoredPosition = new Vector3(l_Position.x * 1920f, -(1080f - l_Position.y * 1080f), 0.0f);
+        m_LifeBarRectPosition.gameObject.SetActive(l_Position.z > 0.0f);
+    }
+    //IEnumerator MakeDamagePlayer()
+    //{
+    //	yield return new WaitForSeconds(2.5f);
+    //       GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
+
+    //   }
 }

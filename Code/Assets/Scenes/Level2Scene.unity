@@ -3145,7 +3145,7 @@ PrefabInstance:
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_Speed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
@@ -3167,6 +3167,11 @@ PrefabInstance:
       propertyPath: m_MaxAmmoText
       value: 
       objectReference: {fileID: 600015202}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_LavaCheckpoint
+      value: 
+      objectReference: {fileID: 1729769472}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_CurrentAmmoText
@@ -3747,7 +3752,7 @@ GameObject:
   - component: {fileID: 193675562}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: DeadZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3775,7 +3780,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193675560}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -29383,6 +29388,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1727810445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1729769471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729769472}
+  m_Layer: 0
+  m_Name: CheckPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1729769472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729769471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 117.74528, y: 4.11, z: 14.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1730388759
 PrefabInstance:
   m_ObjectHideFlags: 0
