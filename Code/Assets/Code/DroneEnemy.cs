@@ -34,6 +34,9 @@ public class DroneEnemy : MonoBehaviour
     public float m_DroneShootingRange = 4f;
 	public float m_MaxChaseDistance = 50f;
 
+	public float m_DroneLifes = 3f;
+	public float m_DroneDamage = 15f;
+
 
     private void Awake()
 	{
@@ -76,6 +79,13 @@ public class DroneEnemy : MonoBehaviour
 		Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
 		Vector3 l_PlayerEyesPosition = l_PlayerPosition + Vector3.up * m_EyesPlayerHeight;
 		Debug.DrawLine(l_EyesPosition, l_PlayerEyesPosition, SeesPlayer() ? Color.red : Color.blue);
+
+		if(m_DroneLifes <= 0f)
+		{
+			SetDieState();
+		}
+
+		//Debug.Log(m_DroneLifes);
 	}
 	void SetIdelState()
 	{
@@ -187,9 +197,10 @@ public class DroneEnemy : MonoBehaviour
 	{
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 
-        if (Vector3.Distance(l_PlayerPosition, transform.position) < m_DroneShootingRange)
+        if (Vector3.Distance(l_PlayerPosition, transform.position) <= m_DroneShootingRange)
         {
-			//Debug.Log("Shooting");
+			Debug.Log("Shooting");
+			//GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
         }
 		else
 		{
@@ -211,11 +222,12 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateDieState()
 	{
-
+		gameObject.SetActive(false);
 	}
 	public void Hit(float life)
 	{
-		Debug.Log("hit life" + life);
+		//Debug.Log("hit life" + life);
+		m_DroneLifes -= life;
 	}
 
 	IEnumerator StartSeeingPlayer()
@@ -227,4 +239,11 @@ public class DroneEnemy : MonoBehaviour
 		}
 		
 	}
+
+	//IEnumerator MakeDamagePlayer()
+	//{
+	//	yield return new WaitForSeconds(2.5f);
+ //       GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
+
+ //   }
 }
