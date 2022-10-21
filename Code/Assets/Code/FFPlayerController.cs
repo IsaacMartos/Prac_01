@@ -188,9 +188,9 @@ public class FFPlayerController : MonoBehaviour
         m_CurrentAmmoText.text = m_CurrentAmmo.ToString();  
         m_MaxAmmoText.text = m_CurrentMaxAmmo.ToString();
         m_ShieldText.text = m_Shield.ToString();
-        m_LifesText.text = "Lifes: " + m_Life;
+        m_LifesText.text = "Lifes: " + GameController.GetGameController().GetPlayerLifes();
         m_PointsText.text = "Your Points: " + GameController.GetGameController().GetPoints();
-        m_ShieldText.text = "Shield: " + m_Shield;
+        m_ShieldText.text = "Shield: " + GameController.GetGameController().GetPlayerShield();
                 
 
         if (Input.GetMouseButton(0) && m_CurrentAmmo > 0 && CanShoot())
@@ -391,6 +391,13 @@ public class FFPlayerController : MonoBehaviour
         transform.position = m_LavaCheckpoint.position;
         transform.rotation = m_LavaCheckpoint.rotation;
         m_CharacterController.enabled = true;
+    }
+    public void ChangeLevel()
+    {
+        GameController.GetGameController().SetPlayerLifes(m_Life);
+        GameController.GetGameController().SetPlayerShield(m_Shield);
+        GameController.GetGameController().SetCurrentAmmo(m_CurrentAmmo);
+        //GameController.GetGameController().SetPoints(m_Points);
     }
 
 

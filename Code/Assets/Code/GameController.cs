@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
         if (m_GameController == null)
         {
             m_GameController = new GameObject("GameController").AddComponent<GameController>();
+            GameControllerData l_GameControllerData = Resources.Load<GameControllerData>("GameControllerData");
+            m_GameController.m_PlayerLife = l_GameControllerData.m_Lifes;
         }
         return m_GameController;
     }
@@ -75,7 +77,6 @@ public class GameController : MonoBehaviour
     {
         return m_PlayerShield;
     }
-
     public void SetCurrentAmmo(int CurrentAmmo)
     {
         m_CurrentAmmo = CurrentAmmo;

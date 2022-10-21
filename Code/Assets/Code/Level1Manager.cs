@@ -8,6 +8,7 @@ public class Level1Manager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GameController.GetGameController().GetPlayer().ChangeLevel();
             SceneManager.LoadScene("Level2Scene");
         }
     }
