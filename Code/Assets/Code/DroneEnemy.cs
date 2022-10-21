@@ -94,8 +94,7 @@ public class DroneEnemy : MonoBehaviour
 		if(Vector3.Distance(l_PlayerPosition,transform.position) >= 10f)
 		{
 			m_LifeBar.SetActive(false);
-		}
-		
+		}		
 
 		//Debug.Log(m_DroneLifes);
 	}

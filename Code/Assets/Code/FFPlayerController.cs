@@ -188,9 +188,9 @@ public class FFPlayerController : MonoBehaviour
         m_CurrentAmmoText.text = m_CurrentAmmo.ToString();  
         m_MaxAmmoText.text = m_CurrentMaxAmmo.ToString();
         m_ShieldText.text = m_Shield.ToString();
-        m_LifesText.text = "Lifes: " + GameController.GetGameController().GetPlayerLifes();
+        m_LifesText.text = "Lifes: " + m_Life;
         m_PointsText.text = "Your Points: " + GameController.GetGameController().GetPoints();
-        m_ShieldText.text = "Shield: " + GameController.GetGameController().GetPlayerShield();
+        m_ShieldText.text = "Shield: " + m_Shield;
                 
 
         if (Input.GetMouseButton(0) && m_CurrentAmmo > 0 && CanShoot())

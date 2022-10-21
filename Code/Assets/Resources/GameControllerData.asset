@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb6152666543a24ab375b606969bea2, type: 3}
   m_Name: GameControllerData
   m_EditorClassIdentifier: 
-  m_Lifes: 0
+  m_Lifes: 100
