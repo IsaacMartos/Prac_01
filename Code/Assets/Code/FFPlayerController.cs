@@ -226,11 +226,6 @@ public class FFPlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(m_NextLevelKeyCode) && GameController.m_GameController.GetPoints() > 50)
-        {
-            SceneManager.LoadScene("Level2Scene");
-        }
-
     }
 
     private bool CanShoot()
@@ -329,7 +324,7 @@ public class FFPlayerController : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(m_ReloadAnimationClip.length);
+        yield return new WaitForSeconds(m_ReloadAnimationClip.length - 1f);
         if ((m_AmmoCapacity - m_CurrentAmmo) <= m_CurrentMaxAmmo)
         {
             m_CurrentMaxAmmo -= (m_AmmoCapacity - m_CurrentAmmo);
