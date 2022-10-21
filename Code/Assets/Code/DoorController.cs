@@ -12,6 +12,7 @@ public class DoorController : MonoBehaviour
     public AnimationClip m_DoorClosing;
     public AnimationClip m_DoorOpening;
     public int m_DoorOpenPoints = 100;
+    bool m_IsClosed = false;
 
     void Start()
     {
@@ -24,14 +25,17 @@ public class DoorController : MonoBehaviour
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
         if (DetectionPlayer() && gameObject.tag == "NormalDoor")
         {
-            SetOpenDoorAnamation();            
-        }
-
-
-        if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
-        {
             SetOpenDoorAnamation();
         }
+
+
+        /*if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
+        {
+            SetOpenDoorAnamation();
+        }*/
+
+        else if (!m_IsClosed)
+            SetCloseDoorAnimation();
                 
         //Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
         //if (Input.GetKeyDown(KeyCode.E))
@@ -49,26 +53,32 @@ public class DoorController : MonoBehaviour
 
     void SetOpenDoorAnamation()
 	{
+        m_IsClosed = false;
         m_Animation.CrossFade(m_DoorOpening.name, 0.1f);
+        m_Animation.CrossFadeQueued(m_DoorOpen.name, 0.0f);
         //m_Animation.CrossFadeQueued(m_DoorClosing.name, 0.1f);
         //StartCoroutine(StopDoor());
     }
 
     void SetCloseDoorAnimation()
 	{
+        m_IsClosed = true;
         m_Animation.CrossFade(m_DoorClosing.name, 0.1f);
+        m_Animation.CrossFadeQueued(m_DoorClose.name, 0.0f);
         //m_Animation.CrossFadeQueued(m_DoorClose.name, 0.1f);
-	}
+    }
 
     void SetIdelDoorAnimation()
 	{
+        m_IsClosed = true;
         m_Animation.CrossFade(m_DoorClose.name, 0.1f);
     }
 
-    void SetOpenAnimationDoor()
+    /*void SetOpenAnimationDoor()
     {
         m_Animation.CrossFade(m_DoorOpen.name, 0.1f);
     }
+    */
 
     //IEnumerator StopDoor()
     //{
