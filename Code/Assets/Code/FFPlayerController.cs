@@ -56,10 +56,10 @@ public class FFPlayerController : MonoBehaviour
     public GameObject m_Bullet;
     public Transform m_BulletSpawn;    
     
-    int m_CurrentMaxAmmo;
-    public int m_MaxAmmo;
-    public int m_AmmoCapacity;
-    int m_CurrentAmmo;
+    float m_CurrentMaxAmmo;
+    float m_MaxAmmo;
+    float m_AmmoCapacity;
+    float m_CurrentAmmo;
 
     TCOObjectPool m_DecalsPool;
     public bool m_DroneGetShoot = false;
@@ -89,14 +89,17 @@ public class FFPlayerController : MonoBehaviour
         m_Life = GameController.GetGameController().GetPlayerLifes();
         m_Shield = GameController.GetGameController().GetPlayerShield();
         m_CurrentAmmo = GameController.GetGameController().GetCurrentAmmo();
+        m_CurrentMaxAmmo = GameController.GetGameController().GetCurrentMaxAmmo();
+        m_AmmoCapacity = GameController.GetGameController().GetCurrentAmmo();
+        m_MaxAmmo = GameController.GetGameController().GetCurrentMaxAmmo();
         m_Points = GameController.GetGameController().GetPoints();
         m_Yaw = transform.rotation.y;
         m_Pitch = m_PitchController.localRotation.x;
         Cursor.lockState = CursorLockMode.Locked;
         m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
         SetIdleWeaponAnimation();
-        m_CurrentAmmo = m_AmmoCapacity;
-        m_CurrentMaxAmmo = m_MaxAmmo;
+        //m_CurrentAmmo = m_AmmoCapacity;
+        //m_CurrentMaxAmmo = m_MaxAmmo;
         //m_LavaCheckpoint.rotation = transform.rotation;
         //m_LavaCheckpoint.position = transform.position;
         m_DecalsPool = new TCOObjectPool(5, m_DecalPrefab);
@@ -204,8 +207,8 @@ public class FFPlayerController : MonoBehaviour
         }
 
         //Debug.Log(m_Shield);
-        //Debug.Log(m_CurrentAmmo + " current ammo ");
-        //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
+        //Debug.Log(m_MaxAmmo + " current ammo ");
+        //Debug.Log(m_AmmoCapacity + "currentmaxammo");
 
         if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity) 
         {
@@ -226,6 +229,8 @@ public class FFPlayerController : MonoBehaviour
                 SetIdleWeaponAnimation();
             }
         }
+
+       
 
     }
 
@@ -397,6 +402,7 @@ public class FFPlayerController : MonoBehaviour
         GameController.GetGameController().SetPlayerLifes(m_Life);
         GameController.GetGameController().SetPlayerShield(m_Shield);
         GameController.GetGameController().SetCurrentAmmo(m_CurrentAmmo);
+        GameController.GetGameController().SetCurrentMaxAmmo(m_CurrentMaxAmmo);
         //GameController.GetGameController().SetPoints(m_Points);
     }
 

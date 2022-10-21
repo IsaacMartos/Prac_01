@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: GameControllerData
   m_EditorClassIdentifier: 
   m_Lifes: 100
+  m_PlayerShield: 100
+  m_CurrentAmmo: 30
+  m_CurrentMaxAmmo: 60

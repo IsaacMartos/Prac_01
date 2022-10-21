@@ -27,6 +27,7 @@ public class DoorController : MonoBehaviour
             SetOpenDoorAnamation();            
         }
 
+
         if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
         {
             SetOpenDoorAnamation();
@@ -49,7 +50,7 @@ public class DoorController : MonoBehaviour
     void SetOpenDoorAnamation()
 	{
         m_Animation.CrossFade(m_DoorOpening.name, 0.1f);
-        m_Animation.CrossFadeQueued(m_DoorClosing.name, 0.1f);
+        //m_Animation.CrossFadeQueued(m_DoorClosing.name, 0.1f);
         //StartCoroutine(StopDoor());
     }
 
