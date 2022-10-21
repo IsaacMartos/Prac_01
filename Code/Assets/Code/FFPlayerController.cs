@@ -62,6 +62,7 @@ public class FFPlayerController : MonoBehaviour
     int m_CurrentAmmo;
 
     TCOObjectPool m_DecalsPool;
+    public bool m_DroneGetShoot = false;
 
     [Header("Animations")]
     public Animation m_Animations;
@@ -226,11 +227,6 @@ public class FFPlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(m_NextLevelKeyCode) && GameController.m_GameController.GetPoints() > 50)
-        {
-            SceneManager.LoadScene("Level2Scene");
-        }
-
     }
 
     private bool CanShoot()
@@ -252,7 +248,10 @@ public class FFPlayerController : MonoBehaviour
         if (Physics.Raycast(l_Ray, out l_RayCastHit, m_MaxShootDistance, m_ShootinLayerMask.value))
         {
             if (l_RayCastHit.collider.tag == "DroneCollider")
+            {
                 l_RayCastHit.collider.GetComponent<HitCollider>().Hit();
+                m_DroneGetShoot = true;
+            }              
 
             if(l_RayCastHit.collider.tag != ("EDiana") || l_RayCastHit.collider.tag != ("DDiana") || l_RayCastHit.collider.tag != ("NDiana"))
             {
@@ -329,7 +328,7 @@ public class FFPlayerController : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(m_ReloadAnimationClip.length);
+        yield return new WaitForSeconds(m_ReloadAnimationClip.length - 1f);
         if ((m_AmmoCapacity - m_CurrentAmmo) <= m_CurrentMaxAmmo)
         {
             m_CurrentMaxAmmo -= (m_AmmoCapacity - m_CurrentAmmo);

@@ -114,6 +114,10 @@ public class DroneEnemy : MonoBehaviour
 			SetAlertState();
             //Debug.Log("pillao");
 		}
+		if (GameController.GetGameController().GetPlayer().m_DroneGetShoot == true)
+		{
+			SetAlertState();
+		}
 
 	}
 	bool HearsPlayer()
