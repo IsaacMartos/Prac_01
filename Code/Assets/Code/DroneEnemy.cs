@@ -41,6 +41,7 @@ public class DroneEnemy : MonoBehaviour
     public Image m_LifeBarImage;
     public Transform m_LifeBarAnchorPosition;
     public RectTransform m_LifeBarRectPosition;
+	public GameObject m_LifeBar;
 
     private void Awake()
 	{
@@ -89,6 +90,12 @@ public class DroneEnemy : MonoBehaviour
 		{
 			SetDieState();
 		}
+
+		if(Vector3.Distance(l_PlayerPosition,transform.position) >= 10f)
+		{
+			m_LifeBar.SetActive(false);
+		}
+		
 
 		//Debug.Log(m_DroneLifes);
 	}

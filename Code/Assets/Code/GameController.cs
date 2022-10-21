@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(m_PlayerLife + "Player life");
+        //Debug.Log(m_PlayerLife + "Player life");
         //Debug.Log(m_PlayerPoints + "Player points");
         //Debug.Log(m_CurrentAmmo + "Player current ammo");
         //Debug.Log(m_PlayerShield + "Player shield");
