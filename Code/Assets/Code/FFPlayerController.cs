@@ -208,7 +208,7 @@ public class FFPlayerController : MonoBehaviour
 
         //Debug.Log(m_Shield);
         //Debug.Log(m_MaxAmmo + " current ammo ");
-        //Debug.Log(m_AmmoCapacity + "currentmaxammo");
+        //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
         if (m_CurrentMaxAmmo > 0 && m_CurrentAmmo < m_AmmoCapacity) 
         {
@@ -367,6 +367,25 @@ public class FFPlayerController : MonoBehaviour
         m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 150.0f);
 	}
 
+    public float GetShield()
+    {
+        return m_Shield;
+    }
+
+    public void AddShield(float Shield)
+    {
+        m_Shield = Mathf.Clamp(m_Shield + Shield, 0.0f, 150.0f);
+    }
+    public float GetAmmo()
+    {
+        return m_CurrentMaxAmmo;
+    }
+
+    public void AddAmmo(float CurrentMaxAmmo)
+    {
+        m_CurrentMaxAmmo = Mathf.Clamp(m_CurrentMaxAmmo + CurrentMaxAmmo, 0.0f, 60.0f);
+    }
+
     public void GetHitDrone(float damage)
     {
         m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 150.0f);
@@ -376,7 +395,7 @@ public class FFPlayerController : MonoBehaviour
 	{
         if (other.tag == "Item")
             other.GetComponent<Item>().Pick(this);
-        Debug.Log(m_Life);
+        //Debug.Log(m_Life);
         if (other.transform.tag == "DeadZone")
         {
             Kill();
