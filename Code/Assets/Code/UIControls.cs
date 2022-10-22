@@ -11,8 +11,7 @@ public class UIControls : MonoBehaviour
     private Level1Manager m_Level1Manager;
 
     private void Start()
-    {
-        
+    {        
         StartCoroutine(FadeOut());
     }
 
