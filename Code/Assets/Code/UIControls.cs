@@ -8,13 +8,23 @@ public class UIControls : MonoBehaviour
     public List<Image> M_FadeImage = new List<Image>();
 
     public float m_Speed = 1.0f;
+    private Level1Manager m_Level1Manager;
 
     private void Start()
     {
+        
         StartCoroutine(FadeOut());
     }
 
-    IEnumerator FadeIn()
+    private void Update()
+    {
+        //if(m_Level1Manager.m_GoingLevel2 == true)
+        //{
+        //    StartCoroutine(FadeIn());
+        //}
+    }
+
+    public IEnumerator FadeIn()
     {
         float alpha = M_FadeImage[0].color.a;
 
@@ -31,7 +41,7 @@ public class UIControls : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator FadeOut()
+    public IEnumerator FadeOut()
     {
         float alpha = M_FadeImage[0].color.a;
 

@@ -28,10 +28,10 @@ public class DoorController : MonoBehaviour
         }
 
 
-        /*if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
+        if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
         {
             SetOpenDoorAnamation();
-        }*/
+        }
 
         else if (!m_IsClosed)
             SetCloseDoorAnimation();
