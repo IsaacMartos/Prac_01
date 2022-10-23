@@ -10,7 +10,6 @@ public class DoorController : MonoBehaviour
     public AnimationClip m_DoorClose;
     public AnimationClip m_DoorClosing;
     public AnimationClip m_DoorOpening;
-    public int m_DoorOpenPoints = 100;
     bool m_IsClosed = false;
 
     void Start()
@@ -22,7 +21,7 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-        if (DetectionPlayer() && gameObject.tag == "NormalDoor")
+        if (DetectionPlayer())
         {
             SetOpenDoorAnamation();
         }
