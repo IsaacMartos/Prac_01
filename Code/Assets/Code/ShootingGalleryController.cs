@@ -44,7 +44,7 @@ public class ShootingGalleryController : MonoBehaviour
         {
             obj.GetComponent<Animation>().enabled = true;
         }
-        m_Text.enabled = false;
+        //m_Text.enabled = false;
 
     }
 }

@@ -275,6 +275,10 @@ public class FFPlayerController : MonoBehaviour
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitHardDiana();
             }
+            if (l_RayCastHit.collider.tag == "Target")
+            {
+                GameController.m_GameController.HitEasyDiana();
+            }
         }
 
         else
