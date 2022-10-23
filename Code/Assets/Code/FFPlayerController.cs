@@ -388,7 +388,15 @@ public class FFPlayerController : MonoBehaviour
 
     public void GetHitDrone(float damage)
     {
-        m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 150.0f);
+        if(m_Shield > 0f)
+        {
+            m_Shield = Mathf.Clamp(m_Shield - (damage * 0.75f), 0.0f, 100.0f);
+            m_Life = Mathf.Clamp(m_Life - (damage * 0.25f), 0.0f, 100.0f);
+        }
+        else
+        {
+            m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 100.0f);
+        }
     }
 
 	public void OnTriggerEnter(Collider other)
