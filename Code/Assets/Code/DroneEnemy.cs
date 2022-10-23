@@ -46,8 +46,11 @@ public class DroneEnemy : MonoBehaviour
     public RectTransform m_LifeBarRectPosition;
 	public GameObject m_LifeBar;
 
-	public List<GameObject> m_RespawnGameObjects;
 	private int RndNumber;
+    public UIControls m_UIControls;
+    public GameObject m_LifeItem;
+    public GameObject m_ShieldItem;
+    public GameObject m_BulletsItem;
 
     private void Awake()
 	{
@@ -223,7 +226,7 @@ public class DroneEnemy : MonoBehaviour
         {
 			if (m_CountdowwnBetweeenFireRate <= 0)
 			{
-                Debug.Log("Shooting");
+                //Debug.Log("Shooting");
                 GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
 				m_CountdowwnBetweeenFireRate = 1f / m_DroneFireRate;
             }
@@ -254,24 +257,15 @@ public class DroneEnemy : MonoBehaviour
 		GenerateRandomNumber();
 		if(RndNumber == 0)
 		{
-            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
-            {
-                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
-            }
+			Instantiate(m_LifeItem, transform.position, transform.rotation);
         }
         if (RndNumber == 1)
         {
-            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
-            {
-                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
-            }
+            Instantiate(m_ShieldItem, transform.position, transform.rotation);
         }
         if (RndNumber == 2)
         {
-            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
-            {
-                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
-            }
+            Instantiate(m_BulletsItem, transform.position, transform.rotation);
         }
     }
 	
@@ -302,7 +296,7 @@ public class DroneEnemy : MonoBehaviour
 	public void GenerateRandomNumber()
 	{		
         Random rnd = new Random();
-		RndNumber = rnd.Next(4);
+		RndNumber = rnd.Next(3);
 		Debug.Log(RndNumber);
     }
 }

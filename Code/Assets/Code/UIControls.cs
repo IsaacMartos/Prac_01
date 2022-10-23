@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIControls : MonoBehaviour
 {
     public List<Image> M_FadeImage = new List<Image>();
-
+    
     public float m_Speed = 1.0f;
     private Level1Manager m_Level1Manager;
 
@@ -56,4 +56,6 @@ public class UIControls : MonoBehaviour
 
         yield return null;
     }
+
+   
 }
