@@ -13,8 +13,7 @@ public class Level1Manager : MonoBehaviour
             GameController.GetGameController().GetPlayer().ChangeLevel();
             StartCoroutine(GoingLevel2());
             StartCoroutine(m_UIControls.FadeIn());
-        }
-        
+        }        
     }
 
     IEnumerator GoingLevel2()
