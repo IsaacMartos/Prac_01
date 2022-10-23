@@ -196,7 +196,7 @@ public class DroneEnemy : MonoBehaviour
             Vector3 dirToPlayer = transform.position - l_PlayerPosition;
             Vector3 newPos = transform.position - dirToPlayer;
             m_NavMeshAgent.SetDestination(newPos);
-			m_NavMeshAgent.stoppingDistance = 1.5f;
+			m_NavMeshAgent.stoppingDistance = 2f;
             transform.LookAt(l_PlayerPosition);
         }
 
