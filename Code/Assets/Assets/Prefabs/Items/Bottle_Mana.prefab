@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4000012102853034}
   - component: {fileID: 33000011564412998}
   - component: {fileID: 23000010119388918}
+  - component: {fileID: 6642153993960653843}
+  - component: {fileID: 937541519841794413}
   m_Layer: 0
   m_Name: bottle_blue
   m_TagString: Untagged
@@ -82,36 +84,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1000012264061876
-GameObject:
+--- !u!135 &6642153993960653843
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4000011383747138}
-  m_Layer: 0
-  m_Name: StarsParticles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4000011383747138
-Transform:
+  m_GameObject: {fileID: 1000011052568322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &937541519841794413
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012264061876}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.249, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4000011650569256}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_GameObject: {fileID: 1000011052568322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf945c05db73b9845bfb30cb1a4881ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Shield: 25
 --- !u!1 &1000012370421672
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,14 +133,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012370421672}
-  m_LocalRotation: {x: -0.14580317, y: 0.07533467, z: 0.09261504, w: 0.9820838}
-  m_LocalPosition: {x: 0, y: 1.112, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012102853034}
   m_Father: {fileID: 4000011650569256}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -17.43, y: 7.0870004, z: 9.405001}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1000013317980782
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,8 +150,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000011650569256}
-  - component: {fileID: -1536061373661941232}
-  - component: {fileID: -747510680370269974}
   m_Layer: 0
   m_Name: Bottle_Mana
   m_TagString: Item
@@ -169,40 +165,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013317980782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4000011383747138}
   - {fileID: 4000012798377608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1536061373661941232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013317980782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf945c05db73b9845bfb30cb1a4881ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Shield: 25
---- !u!135 &-747510680370269974
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013317980782}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.251642
-  m_Center: {x: -0.006110698, y: 1.07, z: 0}
 --- !u!1 &1000013970829164
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 1000013970829164}
   m_LocalRotation: {x: -0.00000032782557, y: 0.00000004190952, z: -0.00000003539026,
     w: 1}
-  m_LocalPosition: {x: 0.01743377, y: -0.010290667, z: -0.0612309}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4000012102853034}

@@ -6,7 +6,7 @@ public class AmmoItem : Item
 	public float m_Ammo;
 	public override void Pick(FFPlayerController Player)
 	{
-		if (Player.GetAmmo() < 50)
+		if (Player.GetAmmo() < 50.0f)
 		{
 			Player.AddAmmo(m_Ammo);
 			gameObject.SetActive(false);
