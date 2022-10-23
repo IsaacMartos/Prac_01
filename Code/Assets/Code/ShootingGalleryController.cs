@@ -22,7 +22,6 @@ public class ShootingGalleryController : MonoBehaviour
     private void Update()
     {
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-        Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
 
         if(Vector3.Distance(l_PlayerPosition,transform.position) < 15f)
         {            
