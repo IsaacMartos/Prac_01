@@ -8717,6 +8717,12 @@ PrefabInstance:
       objectReference: {fileID: 477767184}
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
+      propertyPath: m_LifeItem
+      value: 
+      objectReference: {fileID: 7355713013926475229, guid: 82a76256a42024049964a0c8b9bb380f,
+        type: 3}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
       propertyPath: m_DroneLifes
       value: 1
       objectReference: {fileID: 0}
@@ -8725,6 +8731,22 @@ PrefabInstance:
       propertyPath: m_DroneSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_ShieldItem
+      value: 
+      objectReference: {fileID: 1000013317980782, guid: 2cf6690298568294cb6b655c0a3aeb87,
+        type: 3}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_UIControls
+      value: 
+      objectReference: {fileID: 5676773395114411836}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_BulletsItem
+      value: 
+      objectReference: {fileID: 183502, guid: 4656138d9606a80408030bdc231b1233, type: 3}
     - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_DroneDamage
@@ -17112,6 +17134,21 @@ PrefabInstance:
       propertyPath: M_FadeImage.Array.data[0]
       value: 
       objectReference: {fileID: 2098833762}
+    - target: {fileID: 8687460835870634335, guid: cf587b7325be7814aad37ecbb758a713,
+        type: 3}
+      propertyPath: M_FadeMaterials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687460835870634335, guid: cf587b7325be7814aad37ecbb758a713,
+        type: 3}
+      propertyPath: M_FadeMaterials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9468cfbf407387c4d8fef60308588e42, type: 2}
+    - target: {fileID: 8687460835870634335, guid: cf587b7325be7814aad37ecbb758a713,
+        type: 3}
+      propertyPath: M_FadeMaterials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf587b7325be7814aad37ecbb758a713, type: 3}
 --- !u!114 &5676773395114411836 stripped
