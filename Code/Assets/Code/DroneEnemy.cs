@@ -5,6 +5,7 @@ using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class DroneEnemy : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class DroneEnemy : MonoBehaviour
 	public GameObject m_LifeBar;
 
 	public List<GameObject> m_RespawnGameObjects;
+	private int RndNumber;
 
     private void Awake()
 	{
@@ -249,8 +251,29 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateDieState()
 	{
 		gameObject.SetActive(false);
-
-	}
+		GenerateRandomNumber();
+		if(RndNumber == 0)
+		{
+            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
+            {
+                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
+            }
+        }
+        if (RndNumber == 1)
+        {
+            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
+            {
+                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
+            }
+        }
+        if (RndNumber == 2)
+        {
+            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
+            {
+                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
+            }
+        }
+    }
 	
 	IEnumerator StartSeeingPlayer()
 	{
@@ -276,4 +299,10 @@ public class DroneEnemy : MonoBehaviour
         m_LifeBarRectPosition.gameObject.SetActive(l_Position.z > 0.0f);
     }
     
+	public void GenerateRandomNumber()
+	{		
+        Random rnd = new Random();
+		RndNumber = rnd.Next(4);
+		Debug.Log(RndNumber);
+    }
 }
