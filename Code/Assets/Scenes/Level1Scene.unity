@@ -8894,6 +8894,28 @@ PrefabInstance:
       propertyPath: m_PatrolTargets.Array.data[2]
       value: 
       objectReference: {fileID: 414053329}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_RespawnGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_RespawnGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000013317980782, guid: 2cf6690298568294cb6b655c0a3aeb87,
+        type: 3}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_RespawnGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 183502, guid: 4656138d9606a80408030bdc231b1233, type: 3}
+    - target: {fileID: 2279219330596241344, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_RespawnGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 7355713013926475229, guid: 82a76256a42024049964a0c8b9bb380f,
+        type: 3}
     - target: {fileID: 2279219330596241345, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_RootOrder
@@ -8957,6 +8979,16 @@ PrefabInstance:
     - target: {fileID: 2279219330596241350, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219331128380082, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279219331128380086, guid: c268d1dc1f873644b924977f1d9a9a04,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2279219331579064292, guid: c268d1dc1f873644b924977f1d9a9a04,

@@ -5,6 +5,7 @@ using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class DroneEnemy : MonoBehaviour
 {
@@ -37,11 +38,16 @@ public class DroneEnemy : MonoBehaviour
 
 	public float m_DroneLifes = 3f;
 	public float m_DroneDamage = 15f;
+	public float m_DroneFireRate = 2f;
+	private float m_CountdowwnBetweeenFireRate = 0f;
 
     public Image m_LifeBarImage;
     public Transform m_LifeBarAnchorPosition;
     public RectTransform m_LifeBarRectPosition;
 	public GameObject m_LifeBar;
+
+	public List<GameObject> m_RespawnGameObjects;
+	private int RndNumber;
 
     private void Awake()
 	{
@@ -190,6 +196,7 @@ public class DroneEnemy : MonoBehaviour
             Vector3 dirToPlayer = transform.position - l_PlayerPosition;
             Vector3 newPos = transform.position - dirToPlayer;
             m_NavMeshAgent.SetDestination(newPos);
+			m_NavMeshAgent.stoppingDistance = 1.5f;
             transform.LookAt(l_PlayerPosition);
         }
 
@@ -214,8 +221,14 @@ public class DroneEnemy : MonoBehaviour
 
         if (Vector3.Distance(l_PlayerPosition, transform.position) <= m_DroneShootingRange)
         {
-			Debug.Log("Shooting");
-			//GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
+			if (m_CountdowwnBetweeenFireRate <= 0)
+			{
+                Debug.Log("Shooting");
+                GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
+				m_CountdowwnBetweeenFireRate = 1f / m_DroneFireRate;
+            }
+			m_CountdowwnBetweeenFireRate -= Time.deltaTime;
+			
         }
 		else
 		{
@@ -238,7 +251,29 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateDieState()
 	{
 		gameObject.SetActive(false);
-	}
+		GenerateRandomNumber();
+		if(RndNumber == 0)
+		{
+            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
+            {
+                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
+            }
+        }
+        if (RndNumber == 1)
+        {
+            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
+            {
+                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
+            }
+        }
+        if (RndNumber == 2)
+        {
+            for (int i = 0; i < m_RespawnGameObjects.Count; i++)
+            {
+                Instantiate(m_RespawnGameObjects[RndNumber], transform.position, transform.rotation);
+            }
+        }
+    }
 	
 	IEnumerator StartSeeingPlayer()
 	{
@@ -254,7 +289,7 @@ public class DroneEnemy : MonoBehaviour
     {
         m_DroneLifes -= life;
         m_LifeBarImage.fillAmount = m_DroneLifes;
-        Debug.Log("Hiit life" + life);
+        //Debug.Log("Hiit life" + life);
     }
 
     void UpdateLifeBarPosition()
@@ -263,10 +298,11 @@ public class DroneEnemy : MonoBehaviour
         m_LifeBarRectPosition.anchoredPosition = new Vector3(l_Position.x * 1920f, -(1080f - l_Position.y * 1080f), 0.0f);
         m_LifeBarRectPosition.gameObject.SetActive(l_Position.z > 0.0f);
     }
-    //IEnumerator MakeDamagePlayer()
-    //{
-    //	yield return new WaitForSeconds(2.5f);
-    //       GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
-
-    //   }
+    
+	public void GenerateRandomNumber()
+	{		
+        Random rnd = new Random();
+		RndNumber = rnd.Next(4);
+		Debug.Log(RndNumber);
+    }
 }
