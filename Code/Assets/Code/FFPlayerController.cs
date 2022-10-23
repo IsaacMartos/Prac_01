@@ -40,7 +40,7 @@ public class FFPlayerController : MonoBehaviour
 
     public float m_JumpSpeed = 10.0f;
 
-    public Transform m_LavaCheckpoint;
+    private Vector3 CheckPointRespawn;
     //public GameObject m_DecalPrefab;
 
     [Header("Camera")]
@@ -414,8 +414,8 @@ public class FFPlayerController : MonoBehaviour
     {
         m_Life = 100.0f;
         m_CharacterController.enabled = false;
-        transform.position = m_LavaCheckpoint.position;
-        transform.rotation = m_LavaCheckpoint.rotation;
+        transform.position = CheckPointRespawn;
+        //transform.rotation = CheckPointRespawn.rotation;
         m_CharacterController.enabled = true;
     }
     public void ChangeLevel()
@@ -427,6 +427,9 @@ public class FFPlayerController : MonoBehaviour
         //GameController.GetGameController().SetPoints(m_Points);
     }
 
-
+    public void SetRespawnCheckPoint(Vector3 CheckPoint)
+    {
+        CheckPointRespawn = CheckPoint;
+    }
 
 }
