@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class HitCollider : MonoBehaviour
 {
 	public float m_Life;

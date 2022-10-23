@@ -31,7 +31,6 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
     public KeyCode m_ReloadKeyCode = KeyCode.R;
     public KeyCode m_RestartKeyCode = KeyCode.Escape;
-    public KeyCode m_NextLevelKeyCode = KeyCode.Return;
     public KeyCode m_PruebaVida = KeyCode.H;
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
@@ -82,7 +81,6 @@ public class FFPlayerController : MonoBehaviour
     float m_Points;
     float m_Shield;
 
-    //añadir tiempo animaciones para no tener que hardcodearlo
     void Start()
     {
         GameController.GetGameController().SetPlayer(this);
@@ -97,11 +95,7 @@ public class FFPlayerController : MonoBehaviour
         m_Pitch = m_PitchController.localRotation.x;
         Cursor.lockState = CursorLockMode.Locked;
         m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
-        SetIdleWeaponAnimation();
-        //m_CurrentAmmo = m_AmmoCapacity;
-        //m_CurrentMaxAmmo = m_MaxAmmo;
-        //m_LavaCheckpoint.rotation = transform.rotation;
-        //m_LavaCheckpoint.position = transform.position;
+        SetIdleWeaponAnimation();        
         m_DecalsPool = new TCOObjectPool(5, m_DecalPrefab);
     }
 #if UNITY_EDITOR
