@@ -30,8 +30,9 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
     public KeyCode m_ReloadKeyCode = KeyCode.R;
-    public KeyCode m_RestartKeyCode = KeyCode.Escape;
+    public KeyCode m_RestartKeyCode = KeyCode.Return;
     public KeyCode m_PruebaVida = KeyCode.H;
+
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
 
@@ -77,6 +78,7 @@ public class FFPlayerController : MonoBehaviour
     public TextMeshProUGUI m_CurrentAmmoText;
     public TextMeshProUGUI m_MaxAmmoText;
     public GameObject m_GetHitImage;
+    public GameObject m_GameoverScreen;
 
     float m_Life;
     float m_Points;
@@ -195,12 +197,8 @@ public class FFPlayerController : MonoBehaviour
         {
             Shoot();            
         }
-                
-        if (Input.GetKeyDown(m_PruebaVida))
-        {
-            DecreaseShield();
-        }
-
+               
+        
         //Debug.Log(m_Shield);
         //Debug.Log(m_MaxAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
@@ -429,7 +427,11 @@ public class FFPlayerController : MonoBehaviour
     private void Kill()
     {
         m_Life = 0f;
-        GameController.GetGameController().RestartGame();
+        StartCoroutine(GameOver());
+        if (Input.GetKeyDown(m_RestartKeyCode))
+        {
+            GameController.GetGameController().RestartGame();
+        }        
     }
 
     public void RestartGame()
@@ -455,4 +457,9 @@ public class FFPlayerController : MonoBehaviour
         CheckPointRespawn = CheckPoint;
     }
 
+    IEnumerator GameOver()
+    {        
+        m_GameoverScreen.SetActive(true);
+        yield return new WaitForSeconds(2f);
+    }
 }
