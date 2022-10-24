@@ -30,8 +30,9 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
     public KeyCode m_ReloadKeyCode = KeyCode.R;
-    public KeyCode m_RestartKeyCode = KeyCode.Escape;
+    public KeyCode m_RestartKeyCode = KeyCode.Return;
     public KeyCode m_PruebaVida = KeyCode.H;
+
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
 
@@ -76,6 +77,8 @@ public class FFPlayerController : MonoBehaviour
     public TextMeshProUGUI m_PointsText;
     public TextMeshProUGUI m_CurrentAmmoText;
     public TextMeshProUGUI m_MaxAmmoText;
+    public GameObject m_GetHitImage;
+    public GameObject m_GameoverScreen;
 
     float m_Life;
     float m_Points;
@@ -194,12 +197,8 @@ public class FFPlayerController : MonoBehaviour
         {
             Shoot();            
         }
-                
-        if (Input.GetKeyDown(m_PruebaVida))
-        {
-            DecreaseShield();
-        }
-
+               
+        
         //Debug.Log(m_Shield);
         //Debug.Log(m_MaxAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
@@ -224,7 +223,15 @@ public class FFPlayerController : MonoBehaviour
             }
         }
 
-       
+        if (m_GetHitImage != null)
+        {
+            if (m_GetHitImage.GetComponent<Image>().color.a > 0)
+            {
+                var color = m_GetHitImage.GetComponent<Image>().color;
+                color.a -= 0.02f;
+                m_GetHitImage.GetComponent<Image>().color = color;
+            }
+        }
 
     }
 
@@ -395,6 +402,8 @@ public class FFPlayerController : MonoBehaviour
         {
             m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 100.0f);
         }
+        GotHurt();
+
     }
 
 	public void OnTriggerEnter(Collider other)
@@ -408,10 +417,21 @@ public class FFPlayerController : MonoBehaviour
         }
     }
 
+    void GotHurt()
+    {
+        var l_Color = m_GetHitImage.GetComponent<Image>().color;
+        l_Color.a = 0.8f;
+        m_GetHitImage.GetComponent<Image>().color = l_Color;
+    }
+
     private void Kill()
     {
         m_Life = 0f;
-        GameController.GetGameController().RestartGame();
+        StartCoroutine(GameOver());
+        if (Input.GetKeyDown(m_RestartKeyCode))
+        {
+            GameController.GetGameController().RestartGame();
+        }        
     }
 
     public void RestartGame()
@@ -437,4 +457,9 @@ public class FFPlayerController : MonoBehaviour
         CheckPointRespawn = CheckPoint;
     }
 
+    IEnumerator GameOver()
+    {        
+        m_GameoverScreen.SetActive(true);
+        yield return new WaitForSeconds(2f);
+    }
 }

@@ -9004,7 +9004,7 @@ PrefabInstance:
     - target: {fileID: 2279219330596241350, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2279219331128380082, guid: c268d1dc1f873644b924977f1d9a9a04,
         type: 3}
@@ -16632,6 +16632,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029570751}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2029650680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 471402999746653781, guid: cf587b7325be7814aad37ecbb758a713,
+    type: 3}
+  m_PrefabInstance: {fileID: 5676773395114411833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2029895292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18084,10 +18090,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7105701669334510612, guid: cf587b7325be7814aad37ecbb758a713,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8015300313440485204, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450538512361666943, guid: cf587b7325be7814aad37ecbb758a713,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8687460835870634335, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
@@ -18145,6 +18161,11 @@ PrefabInstance:
       propertyPath: m_ShieldText
       value: 
       objectReference: {fileID: 740706780}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_GetHitImage
+      value: 
+      objectReference: {fileID: 2029650680}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_MaxAmmoText
