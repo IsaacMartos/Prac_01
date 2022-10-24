@@ -369,7 +369,7 @@ public class FFPlayerController : MonoBehaviour
 
     public void AddLife(float Life)
 	{
-        m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 150.0f);
+        m_Life = Mathf.Clamp(m_Life + Life, 0.0f, 100.0f);
 	}
 
     public float GetShield()
@@ -379,7 +379,7 @@ public class FFPlayerController : MonoBehaviour
 
     public void AddShield(float Shield)
     {
-        m_Shield = Mathf.Clamp(m_Shield + Shield, 0.0f, 150.0f);
+        m_Shield = Mathf.Clamp(m_Shield + Shield, 0.0f, 100.0f);
     }
     public float GetAmmo()
     {
