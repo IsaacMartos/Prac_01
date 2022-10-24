@@ -181,6 +181,7 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateAlertState()
 	{
+		m_NavMeshAgent.isStopped = true;
         gameObject.transform.Rotate(Vector3.up * m_RotationSpeed * Time.deltaTime);
 		StartCoroutine(StartSeeingPlayer());     				
 	}
@@ -192,6 +193,7 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateChaseState()
 	{
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
+		m_NavMeshAgent.isStopped = false;
 		//Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
 
         if (Vector3.Distance(l_PlayerPosition,transform.position) < m_MaxChaseDistance)

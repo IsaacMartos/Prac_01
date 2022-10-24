@@ -323,10 +323,7 @@ public class FFPlayerController : MonoBehaviour
 
     void CreateShootingParticles(Collider _Collider, Vector3 Position, Vector3 Normal)
     {
-        Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);
-        //GameObject m_CurrentDecal = Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
-        //GameObject.Instantiate(m_DecalPrefab, Position, Quaternion.LookRotation(Normal));
-        //m_CurrentDecal.transform.SetParent(_Collider.gameObject.transform);
+        //Debug.DrawRay(Position, Normal * 5.0f, Color.red, 2.0f);        
         GameObject l_Decal = m_DecalsPool.GetNextElement();
         l_Decal.SetActive(true);
         l_Decal.transform.position = Position;

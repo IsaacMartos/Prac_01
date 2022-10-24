@@ -136,13 +136,13 @@ MonoBehaviour:
     m_Bits: 65335
   m_EyesHeight: 1.8
   m_EyesPlayerHeight: 1.8
-  m_RotationSpeed: 50
+  m_RotationSpeed: 75
   m_DroneSpeed: 7
   m_DroneMinimumRange: 5
   m_DroneShootingRange: 2
   m_MaxChaseDistance: 20
   m_DroneLifes: 1
-  m_DroneDamage: 5
+  m_DroneDamage: 10
   m_DroneFireRate: 2
   m_LifeBarImage: {fileID: 6692541022683364213}
   m_LifeBarAnchorPosition: {fileID: 1616025224393131845}
