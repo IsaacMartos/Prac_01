@@ -7,5 +7,6 @@ public class GameControllerData : ScriptableObject
 	public float m_PlayerShield;
 	public float m_CurrentAmmo;
 	public float m_CurrentMaxAmmo;
+	public float m_AmmoCapacity;
 	
 }

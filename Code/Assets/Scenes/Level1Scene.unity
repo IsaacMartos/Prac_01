@@ -7509,6 +7509,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1014945185}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1025562259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676773393530946614, guid: cf587b7325be7814aad37ecbb758a713,
+    type: 3}
+  m_PrefabInstance: {fileID: 5676773395114411833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1026702023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10842,6 +10848,7 @@ MonoBehaviour:
   - {fileID: 1700525646}
   - {fileID: 418291713}
   m_Text: {fileID: 401724884}
+  m_PointsText: {fileID: 1025562259}
   m_StartShootingGalleryKey: 13
 --- !u!4 &1381239486 stripped
 Transform:
@@ -13758,7 +13765,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5676773395114411833}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1025562259}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -18381,6 +18388,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5676773393530946614, guid: cf587b7325be7814aad37ecbb758a713,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5676773393663912305, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -18504,7 +18516,7 @@ PrefabInstance:
     - target: {fileID: 8015300313440485204, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8687460835870634335, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}

@@ -88,7 +88,7 @@ public class FFPlayerController : MonoBehaviour
         m_Shield = GameController.GetGameController().GetPlayerShield();
         m_CurrentAmmo = GameController.GetGameController().GetCurrentAmmo();
         m_CurrentMaxAmmo = GameController.GetGameController().GetCurrentMaxAmmo();
-        m_AmmoCapacity = GameController.GetGameController().GetCurrentAmmo();
+        m_AmmoCapacity = GameController.GetGameController().GetAmmoCapacity();
         m_MaxAmmo = GameController.GetGameController().GetCurrentMaxAmmo();
         m_Points = GameController.GetGameController().GetPoints();
         m_Yaw = transform.rotation.y;
@@ -428,6 +428,7 @@ public class FFPlayerController : MonoBehaviour
         GameController.GetGameController().SetPlayerShield(m_Shield);
         GameController.GetGameController().SetCurrentAmmo(m_CurrentAmmo);
         GameController.GetGameController().SetCurrentMaxAmmo(m_CurrentMaxAmmo);
+        GameController.GetGameController().SetAmmoCapacity(m_AmmoCapacity);
         //GameController.GetGameController().SetPoints(m_Points);
     }
 

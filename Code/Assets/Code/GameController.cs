@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     int m_DifficultDiana = 50;
     public float m_CurrentAmmo = 30f;
     public float m_CurrentMaxAmmo = 60f;
+    public float m_AmmoCapacity = 30f;
 
     private void Start()
     {        
@@ -86,6 +87,15 @@ public class GameController : MonoBehaviour
     public float GetCurrentMaxAmmo()
     {
         return m_CurrentMaxAmmo;
+    }
+
+    public void SetAmmoCapacity(float AmmoCapacity)
+    {
+        m_AmmoCapacity = AmmoCapacity;
+    }
+    public float GetAmmoCapacity()
+    {
+        return m_AmmoCapacity;
     }
     public void SetPoints(int PlayerPoints)
     {
