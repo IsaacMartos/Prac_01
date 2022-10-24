@@ -237,22 +237,23 @@ public class FFPlayerController : MonoBehaviour
         }
 
         if(m_Life <= 0.0f)
-            Kill();
+           Kill();
 
         if(m_PlayerDead == true)
         {
+            StartCoroutine(m_UIControls.FadeIn());
             m_GameoverScreen.SetActive(true);
             m_CharacterController.enabled = false;
-            
+
             if (Input.GetKeyDown(m_RestartKeyCode))
             {
                 StartCoroutine(m_UIControls.FadeOut());
                 GameController.GetGameController().RestartGame();
                 m_PlayerDead = false;
                 m_CharacterController.enabled = true;
-                m_GameoverScreen.SetActive(false);               
-
+                m_GameoverScreen.SetActive(false);
             }
+            
         }
     }
 
@@ -474,9 +475,11 @@ public class FFPlayerController : MonoBehaviour
         CheckPointRespawn = CheckPoint;
     }
 
-    IEnumerator GameOver()
-    {        
-        m_GameoverScreen.SetActive(true);
-        yield return new WaitForSeconds(2f);
+    
+    IEnumerator JustDied()
+    {
+        StartCoroutine(m_UIControls.FadeIn());
+        yield return new WaitForSeconds(1f);
+        
     }
 }

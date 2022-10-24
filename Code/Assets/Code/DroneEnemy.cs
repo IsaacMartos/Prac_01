@@ -88,7 +88,6 @@ public class DroneEnemy : MonoBehaviour
 				UpdateDieState();
 				break;
 		}
-
 		Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 		Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
 		Vector3 l_PlayerEyesPosition = l_PlayerPosition + Vector3.up * m_EyesPlayerHeight;
@@ -119,10 +118,12 @@ public class DroneEnemy : MonoBehaviour
 	{
 		m_State = TState.PATROL;
 		m_NavMeshAgent.destination = m_PatrolTargets[m_CurrentPatrolTargetId].position;
+		m_NavMeshAgent.isStopped = false;
 	}
 	void UpdatePatrolState()
 	{
-		if (PatrolTargetPositionArrive())
+        
+        if (PatrolTargetPositionArrive())
 			MoveToNextPatrolPosition();
 		if (HearsPlayer())
 		{
@@ -133,6 +134,7 @@ public class DroneEnemy : MonoBehaviour
 		{
 			SetAlertState();
 		}
+		
 
 	}
 	bool HearsPlayer()
@@ -273,7 +275,7 @@ public class DroneEnemy : MonoBehaviour
 	
 	IEnumerator StartSeeingPlayer()
 	{
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(5.0f);
 		if (SeesPlayer())
 		{
 			SetChaseState();
