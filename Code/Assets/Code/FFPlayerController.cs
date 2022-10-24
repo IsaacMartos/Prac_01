@@ -80,6 +80,7 @@ public class FFPlayerController : MonoBehaviour
     public TextMeshProUGUI m_MaxAmmoText;
     public GameObject m_GetHitImage;
     public GameObject m_GameoverScreen;
+    public UIControls m_UIControls;
 
     float m_Life;
     float m_Points;
@@ -235,17 +236,22 @@ public class FFPlayerController : MonoBehaviour
             }
         }
 
+        if(m_Life <= 0.0f)
+            Kill();
+
         if(m_PlayerDead == true)
         {
             m_GameoverScreen.SetActive(true);
             m_CharacterController.enabled = false;
-                        
+            
             if (Input.GetKeyDown(m_RestartKeyCode))
             {
+                StartCoroutine(m_UIControls.FadeOut());
                 GameController.GetGameController().RestartGame();
                 m_PlayerDead = false;
                 m_CharacterController.enabled = true;
-                m_GameoverScreen.SetActive(false);
+                m_GameoverScreen.SetActive(false);               
+
             }
         }
     }
@@ -325,6 +331,7 @@ public class FFPlayerController : MonoBehaviour
         l_Decal.SetActive(true);
         l_Decal.transform.position = Position;
         l_Decal.transform.rotation = Quaternion.LookRotation(Normal);
+        l_Decal.transform.SetParent(_Collider.gameObject.transform);
     }
 
     void SetIdleWeaponAnimation()

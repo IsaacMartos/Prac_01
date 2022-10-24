@@ -675,6 +675,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3638220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8687460835870634335, guid: cf587b7325be7814aad37ecbb758a713,
+    type: 3}
+  m_PrefabInstance: {fileID: 3638218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f407dd793792240a62e219d6e54245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8474320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3830,6 +3842,11 @@ PrefabInstance:
       propertyPath: m_ShieldText
       value: 
       objectReference: {fileID: 1950220509}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_UIControls
+      value: 
+      objectReference: {fileID: 3638220}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_GetHitImage
