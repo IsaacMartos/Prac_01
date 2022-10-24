@@ -76,6 +76,7 @@ public class FFPlayerController : MonoBehaviour
     public TextMeshProUGUI m_PointsText;
     public TextMeshProUGUI m_CurrentAmmoText;
     public TextMeshProUGUI m_MaxAmmoText;
+    public GameObject m_GetHitImage;
 
     float m_Life;
     float m_Points;
@@ -224,7 +225,15 @@ public class FFPlayerController : MonoBehaviour
             }
         }
 
-       
+        if (m_GetHitImage != null)
+        {
+            if (m_GetHitImage.GetComponent<Image>().color.a > 0)
+            {
+                var color = m_GetHitImage.GetComponent<Image>().color;
+                color.a -= 0.02f;
+                m_GetHitImage.GetComponent<Image>().color = color;
+            }
+        }
 
     }
 
@@ -395,6 +404,8 @@ public class FFPlayerController : MonoBehaviour
         {
             m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 100.0f);
         }
+        GotHurt();
+
     }
 
 	public void OnTriggerEnter(Collider other)
@@ -406,6 +417,13 @@ public class FFPlayerController : MonoBehaviour
         {
             Kill();
         }
+    }
+
+    void GotHurt()
+    {
+        var l_Color = m_GetHitImage.GetComponent<Image>().color;
+        l_Color.a = 0.8f;
+        m_GetHitImage.GetComponent<Image>().color = l_Color;
     }
 
     private void Kill()
