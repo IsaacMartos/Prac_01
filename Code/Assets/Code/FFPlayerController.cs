@@ -35,6 +35,7 @@ public class FFPlayerController : MonoBehaviour
 
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
+    bool m_PlayerDead = false;
 
     float m_VerticalSpeed = 0.0f;
     bool m_OnGround = true;
@@ -100,6 +101,7 @@ public class FFPlayerController : MonoBehaviour
         m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
         SetIdleWeaponAnimation();        
         m_DecalsPool = new TCOObjectPool(5, m_DecalPrefab);
+        m_PlayerDead = false;
     }
 #if UNITY_EDITOR
     void UpdateInputDebug()
@@ -233,6 +235,19 @@ public class FFPlayerController : MonoBehaviour
             }
         }
 
+        if(m_PlayerDead == true)
+        {
+            m_GameoverScreen.SetActive(true);
+            m_CharacterController.enabled = false;
+                        
+            if (Input.GetKeyDown(m_RestartKeyCode))
+            {
+                GameController.GetGameController().RestartGame();
+                m_PlayerDead = false;
+                m_CharacterController.enabled = true;
+                m_GameoverScreen.SetActive(false);
+            }
+        }
     }
 
     private bool CanShoot()
@@ -413,12 +428,7 @@ public class FFPlayerController : MonoBehaviour
         //Debug.Log(m_Life);
         if (other.transform.tag == "DeadZone")
         {
-            Kill();
-            StartCoroutine(GameOver());
-            if (Input.GetKeyDown(m_RestartKeyCode))
-            {
-                GameController.GetGameController().RestartGame();
-            }
+            Kill();            
         }
     }
 
@@ -432,7 +442,8 @@ public class FFPlayerController : MonoBehaviour
     private void Kill()
     {
         m_Life = 0f;
-               
+        m_Shield = 0f;
+        m_PlayerDead = true;
     }
 
     public void RestartGame()
