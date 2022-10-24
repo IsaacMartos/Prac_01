@@ -437,6 +437,7 @@ public class FFPlayerController : MonoBehaviour
     public void RestartGame()
     {
         m_Life = 100.0f;
+        m_Shield = 100.0f;
         m_CharacterController.enabled = false;
         transform.position = CheckPointRespawn;
         //transform.rotation = CheckPointRespawn.rotation;
