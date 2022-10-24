@@ -278,6 +278,11 @@ public class DroneEnemy : MonoBehaviour
 		{
 			SetChaseState();
 		}
+
+		else
+		{
+			SetPatrolState();
+		}
 		
 	}
 
