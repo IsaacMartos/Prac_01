@@ -127,6 +127,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   m_HearRangerDistance: 6
   m_VisualConeAngle: 60
   m_SightDistance: 50
