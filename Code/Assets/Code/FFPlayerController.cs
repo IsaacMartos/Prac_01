@@ -414,6 +414,11 @@ public class FFPlayerController : MonoBehaviour
         if (other.transform.tag == "DeadZone")
         {
             Kill();
+            StartCoroutine(GameOver());
+            if (Input.GetKeyDown(m_RestartKeyCode))
+            {
+                GameController.GetGameController().RestartGame();
+            }
         }
     }
 
@@ -427,11 +432,7 @@ public class FFPlayerController : MonoBehaviour
     private void Kill()
     {
         m_Life = 0f;
-        StartCoroutine(GameOver());
-        if (Input.GetKeyDown(m_RestartKeyCode))
-        {
-            GameController.GetGameController().RestartGame();
-        }        
+               
     }
 
     public void RestartGame()
