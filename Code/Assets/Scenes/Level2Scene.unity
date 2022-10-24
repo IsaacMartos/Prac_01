@@ -3827,9 +3827,19 @@ PrefabInstance:
       objectReference: {fileID: 1950220509}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
+      propertyPath: m_GetHitImage
+      value: 
+      objectReference: {fileID: 1003365151}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
       propertyPath: m_MaxAmmoText
       value: 
       objectReference: {fileID: 600015202}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_GameoverScreen
+      value: 
+      objectReference: {fileID: 198687183}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_LavaCheckpoint
@@ -4532,6 +4542,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193675560}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &198687183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6167782269777355032, guid: cf587b7325be7814aad37ecbb758a713,
+    type: 3}
+  m_PrefabInstance: {fileID: 3638218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &202817600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8875449794350654438, guid: b581fdbd127292d44ab21c4b16d91d05,
@@ -19489,6 +19505,12 @@ Transform:
   m_Father: {fileID: 779229833}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1003365151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 471402999746653781, guid: cf587b7325be7814aad37ecbb758a713,
+    type: 3}
+  m_PrefabInstance: {fileID: 3638218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1005116542
 GameObject:
   m_ObjectHideFlags: 0
