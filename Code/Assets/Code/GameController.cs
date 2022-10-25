@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameController : MonoBehaviour
     public float m_CurrentAmmo = 30f;
     public float m_CurrentMaxAmmo = 60f;
     public float m_AmmoCapacity = 30f;
+
+    List<GameObject> m_RespawnObjects = new List<GameObject>();
 
     private void Start()
     {        
@@ -43,6 +46,20 @@ public class GameController : MonoBehaviour
             GameObject.Destroy(m_GameController.gameObject);
         m_GameController = null;
     }
+    public void AddRespawnElement(GameObject RespawnObject)
+    {
+        m_RespawnObjects.Add(RespawnObject);
+    }
+
+    public void RespawnElements()
+    {
+        foreach (GameObject l_RespawnObject in m_RespawnObjects)
+        {
+            l_RespawnObject.Respawn();
+        }
+
+    }
+
     public void SetPlayerLifes(float PlayerLife)
     {
         m_PlayerLife = PlayerLife;
