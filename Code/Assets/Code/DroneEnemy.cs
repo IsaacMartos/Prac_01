@@ -64,8 +64,7 @@ public class DroneEnemy : MonoBehaviour
 
 	void Start()
 	{
-		SetIdelState();
-		GameController.GetGameController().AddRespawnDroneElement(this);
+		SetIdelState();		
 	}
 
 	void Update()
@@ -274,7 +273,8 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateDieState()
 	{
-		gameObject.SetActive(false);
+        GameController.GetGameController().AddRespawnDroneElement(this);
+        gameObject.SetActive(false);
 		GenerateRandomNumber();
 		if(RndNumber == 0)
 		{

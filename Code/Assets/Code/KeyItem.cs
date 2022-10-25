@@ -9,6 +9,7 @@ public class KeyItem : Item
         if (Player.GetKeys() <= 0)
         {
             Player.AddKeys(m_Keys);
+            GameController.GetGameController().AddRespawnItemsElement(this);
             gameObject.SetActive(false);
         }
     }
