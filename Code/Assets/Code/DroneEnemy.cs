@@ -129,6 +129,7 @@ public class DroneEnemy : MonoBehaviour
     }
 	void UpdatePatrolState()
 	{
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
         if (PatrolTargetPositionArrive())
 		{
             MoveToNextPatrolPosition();
@@ -139,7 +140,7 @@ public class DroneEnemy : MonoBehaviour
 			SetAlertState();
             //Debug.Log("pillao");
 		}
-		if (GameController.GetGameController().GetPlayer().m_DroneGetShoot == true)
+		if (GameController.GetGameController().GetPlayer().m_DroneGetShoot == true && Vector3.Distance(l_PlayerPosition, transform.position) < 10f)
 		{
 			SetAlertState();
 		}
