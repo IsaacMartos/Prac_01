@@ -90,6 +90,7 @@ public class DroneEnemy : MonoBehaviour
 				break;
 		}
 		Debug.Log(m_WatchedPlayer + "Seen");
+        Debug.Log(PatrolTargetPositionArrive() + "Arrived");
         Debug.Log(m_NavMeshAgent.hasPath.ToString() + "haspath" + m_NavMeshAgent.pathPending.ToString() + "pathpending");        
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 		Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
@@ -125,7 +126,7 @@ public class DroneEnemy : MonoBehaviour
     }
 	void UpdatePatrolState()
 	{
-        if (PatrolTargetPositionArrive() && m_WatchedPlayer == false)
+        if (PatrolTargetPositionArrive())
 			MoveToNextPatrolPosition();
 
 		if (HearsPlayer())
@@ -186,8 +187,9 @@ public class DroneEnemy : MonoBehaviour
 	void UpdateAlertState()
 	{
 		m_NavMeshAgent.isStopped = true;
-        gameObject.transform.Rotate(Vector3.up * m_RotationSpeed * Time.deltaTime);
-		StartCoroutine(StartSeeingPlayer());		
+        //gameObject.transform.RotateAround(transform.position, Vector3.up, 360f * Time.deltaTime);
+		gameObject.transform.Rotate(0f, 360f, 0f, Space.Self);
+		//StartCoroutine(StartSeeingPlayer());		
 	}
 
 	void SetChaseState()
@@ -277,22 +279,14 @@ public class DroneEnemy : MonoBehaviour
 	
 	IEnumerator StartSeeingPlayer()
 	{
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.5f);
 		if (SeesPlayer())
 		{
 			m_WatchedPlayer = true;
 			if (m_WatchedPlayer == true)
 				SetChaseState();
-		}
+		}           
 
-		else if(!(SeesPlayer()))
-		{			
-			m_WatchedPlayer = false;
-			SetPatrolState();
-			m_NavMeshAgent.isStopped = false;
-		}            
-
-		
     }
 
     public void Hit(float life)
