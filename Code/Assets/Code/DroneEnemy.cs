@@ -40,6 +40,7 @@ public class DroneEnemy : MonoBehaviour
 	public float m_DroneDamage = 15f;
 	public float m_DroneFireRate = 2f;
 	private float m_CountdowwnBetweeenFireRate = 0f;
+	public bool m_WatchedPlayer = false;
 
     public Image m_LifeBarImage;
     public Transform m_LifeBarAnchorPosition;
@@ -88,7 +89,9 @@ public class DroneEnemy : MonoBehaviour
 				UpdateDieState();
 				break;
 		}
-		Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
+		Debug.Log(m_WatchedPlayer + "Seen");
+        Debug.Log(m_NavMeshAgent.hasPath.ToString() + "haspath" + m_NavMeshAgent.pathPending.ToString() + "pathpending");        
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 		Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
 		Vector3 l_PlayerEyesPosition = l_PlayerPosition + Vector3.up * m_EyesPlayerHeight;
 		Debug.DrawLine(l_EyesPosition, l_PlayerEyesPosition, SeesPlayer() ? Color.red : Color.blue);
@@ -102,10 +105,11 @@ public class DroneEnemy : MonoBehaviour
 		if(Vector3.Distance(l_PlayerPosition,transform.position) >= 10f)
 		{
 			m_LifeBar.SetActive(false);
-		}		
+		}
 
-		//Debug.Log(m_DroneLifes);
-	}
+        
+        //Debug.Log(m_DroneLifes);
+    }
 	void SetIdelState()
 	{
 		m_State = TState.IDLE;
@@ -118,13 +122,12 @@ public class DroneEnemy : MonoBehaviour
 	{
 		m_State = TState.PATROL;
 		m_NavMeshAgent.destination = m_PatrolTargets[m_CurrentPatrolTargetId].position;
-		m_NavMeshAgent.isStopped = false;
-	}
+    }
 	void UpdatePatrolState()
 	{
-        
-        if (PatrolTargetPositionArrive())
+        if (PatrolTargetPositionArrive() && m_WatchedPlayer == false)
 			MoveToNextPatrolPosition();
+
 		if (HearsPlayer())
 		{
 			SetAlertState();
@@ -134,7 +137,6 @@ public class DroneEnemy : MonoBehaviour
 		{
 			SetAlertState();
 		}
-		
 
 	}
 	bool HearsPlayer()
@@ -185,7 +187,7 @@ public class DroneEnemy : MonoBehaviour
 	{
 		m_NavMeshAgent.isStopped = true;
         gameObject.transform.Rotate(Vector3.up * m_RotationSpeed * Time.deltaTime);
-		StartCoroutine(StartSeeingPlayer());     				
+		StartCoroutine(StartSeeingPlayer());		
 	}
 
 	void SetChaseState()
@@ -275,18 +277,23 @@ public class DroneEnemy : MonoBehaviour
 	
 	IEnumerator StartSeeingPlayer()
 	{
-		yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3f);
 		if (SeesPlayer())
 		{
-			SetChaseState();
+			m_WatchedPlayer = true;
+			if (m_WatchedPlayer == true)
+				SetChaseState();
 		}
 
-		else
-		{
+		else if(!(SeesPlayer()))
+		{			
+			m_WatchedPlayer = false;
 			SetPatrolState();
-		}
+			m_NavMeshAgent.isStopped = false;
+		}            
+
 		
-	}
+    }
 
     public void Hit(float life)
     {
