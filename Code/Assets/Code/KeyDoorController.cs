@@ -19,8 +19,8 @@ public class KeyDoorController : MonoBehaviour
     void Update()
     {
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-        int l_Keys = GameController.GetGameController().GetPlayer().GetKeys();
-                
+        int l_Keys = GameController.GetGameController().GetPlayer().GetKeys();        
+        
         if (DetectionPlayer() && l_Keys >= 1)
         {
             SetOpenDoorAnamation();

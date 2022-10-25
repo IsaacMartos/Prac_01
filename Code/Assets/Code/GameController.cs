@@ -13,16 +13,21 @@ public class GameController : MonoBehaviour
     int m_EasyDianaPoints = 10;
     int m_DianaPoints = 20;
     int m_DifficultDiana = 50;
-    int m_PlayerKeys = 0;
+    public int m_PlayerKeys = 0;
     public float m_CurrentAmmo = 30f;
     public float m_CurrentMaxAmmo = 60f;
     public float m_AmmoCapacity = 30f;
 
-    List<GameObject> m_RespawnObjects = new List<GameObject>();
+    public List<DroneEnemy> m_RespawnObjects = new List<DroneEnemy>();
 
     private void Start()
     {        
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void Update()
+    {
+        Debug.Log(m_PlayerKeys);
     }
 
     public static GameController GetGameController()
@@ -46,16 +51,16 @@ public class GameController : MonoBehaviour
             GameObject.Destroy(m_GameController.gameObject);
         m_GameController = null;
     }
-    public void AddRespawnElement(GameObject RespawnObject)
+    public void AddRespawnElement(DroneEnemy RespawnObject)
     {
         m_RespawnObjects.Add(RespawnObject);
     }
 
     public void RespawnElements()
     {
-        foreach (GameObject l_RespawnObject in m_RespawnObjects)
+        foreach (DroneEnemy l_RespawnObject in m_RespawnObjects)
         {
-            //l_RespawnObject.Respawn();
+            l_RespawnObject.Respawn();
         }
 
     }

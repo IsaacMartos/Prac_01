@@ -419,7 +419,7 @@ public class FFPlayerController : MonoBehaviour
     }
     public void AddKeys(int Keys)
     {
-        m_Keys = Mathf.Clamp(m_Keys + Keys, 0, 1);
+        m_Keys = Mathf.Clamp(m_Keys + Keys, 0, 2);
         StartCoroutine(mstgKey());
     }
 
@@ -461,6 +461,7 @@ public class FFPlayerController : MonoBehaviour
         m_Life = 0f;
         m_Shield = 0f;
         m_PlayerDead = true;
+        
     }
 
     public void RestartGame()
@@ -471,6 +472,7 @@ public class FFPlayerController : MonoBehaviour
         transform.position = CheckPointRespawn;
         //transform.rotation = CheckPointRespawn.rotation;
         m_CharacterController.enabled = true;
+        GameController.GetGameController().RespawnElements();
     }
     public void ChangeLevel()
     {
@@ -491,7 +493,7 @@ public class FFPlayerController : MonoBehaviour
     IEnumerator mstgKey()
     {
         m_KeyMessage.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         m_KeyMessage.SetActive(false);
     }
 }

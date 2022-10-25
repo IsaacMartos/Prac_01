@@ -65,6 +65,7 @@ public class DroneEnemy : MonoBehaviour
 	void Start()
 	{
 		SetIdelState();
+		GameController.GetGameController().AddRespawnElement(this);
 	}
 
 	void Update()
@@ -321,4 +322,9 @@ public class DroneEnemy : MonoBehaviour
 		RndNumber = rnd.Next(3);
 		Debug.Log(RndNumber);
     }
+
+	public void Respawn()
+	{
+		gameObject.SetActive(true);
+	}
 }
