@@ -53,6 +53,10 @@ public class DroneEnemy : MonoBehaviour
     public GameObject m_ShieldItem;
     public GameObject m_BulletsItem;
 
+    public Animation m_Animation;
+    public AnimationClip m_DroneAlert;
+    public AnimationClip m_DroneIdle;
+
     private void Awake()
 	{
 		m_NavMeshAgent = GetComponent<NavMeshAgent>();
@@ -89,9 +93,7 @@ public class DroneEnemy : MonoBehaviour
 				UpdateDieState();
 				break;
 		}
-		Debug.Log(m_WatchedPlayer + "Seen");
-        Debug.Log(PatrolTargetPositionArrive() + "Arrived");
-        Debug.Log(m_NavMeshAgent.hasPath.ToString() + "haspath" + m_NavMeshAgent.pathPending.ToString() + "pathpending");        
+		    
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
 		Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
 		Vector3 l_PlayerEyesPosition = l_PlayerPosition + Vector3.up * m_EyesPlayerHeight;
@@ -123,11 +125,14 @@ public class DroneEnemy : MonoBehaviour
 	{
 		m_State = TState.PATROL;
 		m_NavMeshAgent.destination = m_PatrolTargets[m_CurrentPatrolTargetId].position;
+        m_NavMeshAgent.stoppingDistance = 0f;
     }
 	void UpdatePatrolState()
 	{
         if (PatrolTargetPositionArrive())
-			MoveToNextPatrolPosition();
+		{
+            MoveToNextPatrolPosition();
+        }			
 
 		if (HearsPlayer())
 		{
@@ -186,10 +191,17 @@ public class DroneEnemy : MonoBehaviour
 	}
 	void UpdateAlertState()
 	{
-		m_NavMeshAgent.isStopped = true;
-        //gameObject.transform.RotateAround(transform.position, Vector3.up, 360f * Time.deltaTime);
-		gameObject.transform.Rotate(0f, 360f, 0f, Space.Self);
-		//StartCoroutine(StartSeeingPlayer());		
+		m_NavMeshAgent.isStopped = true;		
+		m_Animation.CrossFade(m_DroneAlert.name, 0.1f);
+		if (SeesPlayer())
+		{
+			SetChaseState();
+			m_Animation.Stop();
+		}
+		else
+		{			
+			SetPatrolState();
+		}
 	}
 
 	void SetChaseState()

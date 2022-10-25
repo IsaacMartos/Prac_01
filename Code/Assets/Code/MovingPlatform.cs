@@ -49,12 +49,12 @@ public class MovingPlatform : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
         other.transform.SetParent(transform);
-        Debug.Log("Estoy");
+        //Debug.Log("Estoy");
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
         other.transform.SetParent(null);
-        Debug.Log("No estoy");
+        //Debug.Log("No estoy");
     }
 }

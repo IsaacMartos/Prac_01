@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     int m_EasyDianaPoints = 10;
     int m_DianaPoints = 20;
     int m_DifficultDiana = 50;
+    int m_PlayerKeys = 0;
     public float m_CurrentAmmo = 30f;
     public float m_CurrentMaxAmmo = 60f;
     public float m_AmmoCapacity = 30f;
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour
             m_GameController.m_PlayerShield = l_GameControllerData.m_PlayerShield;
             m_GameController.m_CurrentAmmo = l_GameControllerData.m_CurrentAmmo;
             m_GameController.m_CurrentMaxAmmo = l_GameControllerData.m_CurrentMaxAmmo;
+            m_GameController.m_PlayerKeys = l_GameControllerData.m_Keys;
         }
         return m_GameController;
     }
@@ -97,6 +99,16 @@ public class GameController : MonoBehaviour
     {
         return m_AmmoCapacity;
     }
+
+    public void SetPlayerKeys(int PlayerKeys)
+    {
+        m_PlayerKeys = PlayerKeys;
+    }
+    public int GetPlayerKeys()
+    {
+        return m_PlayerKeys;
+    }
+
     public void SetPoints(int PlayerPoints)
     {
         m_PlayerPoints = PlayerPoints;

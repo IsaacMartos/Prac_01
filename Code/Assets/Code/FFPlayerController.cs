@@ -81,10 +81,12 @@ public class FFPlayerController : MonoBehaviour
     public GameObject m_GetHitImage;
     public GameObject m_GameoverScreen;
     public UIControls m_UIControls;
+    public GameObject m_KeyMessage;
 
     float m_Life;
     float m_Points;
     float m_Shield;
+    int m_Keys;
 
     void Start()
     {
@@ -96,6 +98,7 @@ public class FFPlayerController : MonoBehaviour
         m_AmmoCapacity = GameController.GetGameController().GetAmmoCapacity();
         m_MaxAmmo = GameController.GetGameController().GetCurrentMaxAmmo();
         m_Points = GameController.GetGameController().GetPoints();
+        m_Keys = GameController.GetGameController().GetPlayerKeys();
         m_Yaw = transform.rotation.y;
         m_Pitch = m_PitchController.localRotation.x;
         Cursor.lockState = CursorLockMode.Locked;
@@ -199,10 +202,9 @@ public class FFPlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && m_CurrentAmmo > 0 && CanShoot())
         {
             Shoot();            
-        }
-               
+        }    
         
-        //Debug.Log(m_Shield);
+        
         //Debug.Log(m_MaxAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
@@ -411,6 +413,16 @@ public class FFPlayerController : MonoBehaviour
         m_CurrentMaxAmmo = Mathf.Clamp(m_CurrentMaxAmmo + CurrentMaxAmmo, 0.0f, 60.0f);
     }
 
+    public int GetKeys()
+    {
+        return m_Keys;
+    }
+    public void AddKeys(int Keys)
+    {
+        m_Keys = Mathf.Clamp(m_Keys + Keys, 0, 1);
+        StartCoroutine(mstgKey());
+    }
+
     public void GetHitDrone(float damage)
     {
         if(m_Shield > 0f)
@@ -467,6 +479,7 @@ public class FFPlayerController : MonoBehaviour
         GameController.GetGameController().SetCurrentAmmo(m_CurrentAmmo);
         GameController.GetGameController().SetCurrentMaxAmmo(m_CurrentMaxAmmo);
         GameController.GetGameController().SetAmmoCapacity(m_AmmoCapacity);
+        GameController.GetGameController().SetPlayerKeys(m_Keys);
         //GameController.GetGameController().SetPoints(m_Points);
     }
 
@@ -475,11 +488,10 @@ public class FFPlayerController : MonoBehaviour
         CheckPointRespawn = CheckPoint;
     }
 
-    
-    IEnumerator JustDied()
+    IEnumerator mstgKey()
     {
-        StartCoroutine(m_UIControls.FadeIn());
-        yield return new WaitForSeconds(1f);
-        
+        m_KeyMessage.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        m_KeyMessage.SetActive(false);
     }
 }
