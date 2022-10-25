@@ -31,7 +31,7 @@ public class FFPlayerController : MonoBehaviour
     public KeyCode m_DebugLockKeyCode = KeyCode.O;
     public KeyCode m_ReloadKeyCode = KeyCode.R;
     public KeyCode m_RestartKeyCode = KeyCode.Return;
-    public KeyCode m_PruebaVida = KeyCode.H;
+    public KeyCode m_RestartShootingGallery = KeyCode.L;
 
     bool m_AngleLocked = false;
     bool m_AimLocked = true;
@@ -262,6 +262,9 @@ public class FFPlayerController : MonoBehaviour
         {
             m_Shooting = true;
         }
+
+        //if (Input.GetKeyDown(m_RestartShootingGallery) && SceneManager.GetActiveScene().name == "Level1Scene")
+        //    GameController.GetGameController().RespawnGalleryElements();
     }
 
     public bool CanShoot()
@@ -269,7 +272,7 @@ public class FFPlayerController : MonoBehaviour
         return !m_Shooting;
     }
 
-    void Shoot()
+    public void Shoot()
     {
         Ray l_Ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         RaycastHit l_RayCastHit;
@@ -300,16 +303,19 @@ public class FFPlayerController : MonoBehaviour
             {
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitEasyDiana();
+                GameController.GetGameController().AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
             }
             if (l_RayCastHit.collider.tag == "NDiana")
             {
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitNormalDiana();
+                GameController.GetGameController().AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
             }
             if (l_RayCastHit.collider.tag == "DDiana")
             {
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitHardDiana();
+                GameController.GetGameController().AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
             }
             if (l_RayCastHit.collider.tag == "Target")
             {
@@ -465,6 +471,7 @@ public class FFPlayerController : MonoBehaviour
     {
         m_Life = 0f;
         m_Shield = 0f;
+        m_Keys = 0;
         m_PlayerDead = true;
         
     }
@@ -477,7 +484,10 @@ public class FFPlayerController : MonoBehaviour
         transform.position = CheckPointRespawn;
         //transform.rotation = CheckPointRespawn.rotation;
         m_CharacterController.enabled = true;
-        GameController.GetGameController().RespawnElements();
+        GameController.GetGameController().RespawnDroneElements();        
+        GameController.GetGameController().RespawnItemsElements();
+
+        
     }
     public void ChangeLevel()
     {
@@ -501,4 +511,5 @@ public class FFPlayerController : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         m_KeyMessage.SetActive(false);
     }
+        
 }

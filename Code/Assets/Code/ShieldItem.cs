@@ -10,7 +10,7 @@ public class ShieldItem : Item
 		{
 			Player.AddShield(m_Shield);
 			gameObject.SetActive(false);
-			//Debug.Log("mas escudo");
 		}
 	}
+    
 }

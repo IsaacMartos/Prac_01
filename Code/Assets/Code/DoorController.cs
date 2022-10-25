@@ -72,16 +72,6 @@ public class DoorController : MonoBehaviour
         m_Animation.CrossFade(m_DoorClose.name, 0.1f);
     }
 
-    /*void SetOpenAnimationDoor()
-    {
-        m_Animation.CrossFade(m_DoorOpen.name, 0.1f);
-    }
-    */
-
-    //IEnumerator StopDoor()
-    //{
-    //    yield return new WaitForSeconds(m_DoorOpen.length);
-    //    m_Animation.Stop(m_DoorOpening.name);
-    //}
+    
     
 }
