@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
     {
         foreach (GameObject l_RespawnObject in m_RespawnObjects)
         {
-            l_RespawnObject.Respawn();
+            //l_RespawnObject.Respawn();
         }
 
     }
