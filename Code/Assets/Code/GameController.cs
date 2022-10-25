@@ -18,18 +18,15 @@ public class GameController : MonoBehaviour
     public float m_CurrentMaxAmmo = 60f;
     public float m_AmmoCapacity = 30f;
 
-    public List<DroneEnemy> m_RespawnObjects = new List<DroneEnemy>();
+    public List<DroneEnemy> m_RespawnDrones = new List<DroneEnemy>();
+    public List<Item> m_RespawnItems = new List<Item>();
+    public List<GameObject> m_RespawnGalleryObjects = new List<GameObject>();
 
     private void Start()
     {        
         DontDestroyOnLoad(this.gameObject);
     }
-
-    private void Update()
-    {
-        Debug.Log(m_PlayerKeys);
-    }
-
+       
     public static GameController GetGameController()
     {
         if (m_GameController == null)
@@ -51,18 +48,43 @@ public class GameController : MonoBehaviour
             GameObject.Destroy(m_GameController.gameObject);
         m_GameController = null;
     }
-    public void AddRespawnElement(DroneEnemy RespawnObject)
+    public void AddRespawnDroneElement(DroneEnemy RespawnDrones)
     {
-        m_RespawnObjects.Add(RespawnObject);
+        m_RespawnDrones.Add(RespawnDrones);
     }
 
-    public void RespawnElements()
+    public void RespawnDroneElements()
     {
-        foreach (DroneEnemy l_RespawnObject in m_RespawnObjects)
+        foreach (DroneEnemy l_RespawnObject in m_RespawnDrones)
         {
             l_RespawnObject.Respawn();
         }
+    }
 
+    public void AddRespawnGalleryElement(GameObject RespawnGalleryObject)
+    {
+        m_RespawnGalleryObjects.Add(RespawnGalleryObject);
+    }
+
+    //public void RespawnGalleryElements()
+    //{
+    //    foreach (GameObject l_RespawnObject in m_RespawnGalleryObjects)
+    //    {
+    //        l_RespawnObject.Respawn();
+    //    }
+    //}
+
+    public void AddRespawnItemsElement(Item RespawnItems)
+    {
+        m_RespawnItems.Add(RespawnItems);
+    }
+
+    public void RespawnItemsElements()
+    {
+        foreach (Item l_RespawnObject in m_RespawnItems)
+        {
+            l_RespawnObject.Respawn();
+        }
     }
 
     public void SetPlayerLifes(float PlayerLife)

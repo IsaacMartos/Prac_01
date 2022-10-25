@@ -65,7 +65,7 @@ public class DroneEnemy : MonoBehaviour
 	void Start()
 	{
 		SetIdelState();
-		GameController.GetGameController().AddRespawnElement(this);
+		GameController.GetGameController().AddRespawnDroneElement(this);
 	}
 
 	void Update()
