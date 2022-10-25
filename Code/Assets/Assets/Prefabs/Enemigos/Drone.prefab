@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 2279219330596241345}
   - component: {fileID: 2279219330596241344}
   - component: {fileID: 2279219330596241351}
+  - component: {fileID: 437480107636733303}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_DroneLifes: 1
   m_DroneDamage: 10
   m_DroneFireRate: 2
+  m_WatchedPlayer: 0
   m_LifeBarImage: {fileID: 6692541022683364213}
   m_LifeBarAnchorPosition: {fileID: 1616025224393131845}
   m_LifeBarRectPosition: {fileID: 8454205336523303813}
@@ -177,6 +179,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!111 &437480107636733303
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279219330596241350}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f9a0391b65cad424abeadaa9161aa6af, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f9a0391b65cad424abeadaa9161aa6af, type: 2}
+  - {fileID: 7400000, guid: adc53493c0617f0478addfb7c5f4ead4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!65 &2279219330361928565
 BoxCollider:
   m_ObjectHideFlags: 0
