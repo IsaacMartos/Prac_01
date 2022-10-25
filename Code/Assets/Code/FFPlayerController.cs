@@ -257,9 +257,14 @@ public class FFPlayerController : MonoBehaviour
             }
             
         }
+
+        if(SceneManager.GetActiveScene().name == "Level1Scene" && m_Points >= 200f)
+        {
+            m_Shooting = true;
+        }
     }
 
-    private bool CanShoot()
+    public bool CanShoot()
     {
         return !m_Shooting;
     }

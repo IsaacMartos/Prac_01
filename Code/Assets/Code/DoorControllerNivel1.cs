@@ -16,9 +16,12 @@ public class DoorControllerNivel1 : MonoBehaviour
 
 	void Update()
 	{
-		if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints)
+        Debug.Log(GameController.GetGameController().GetPoints());
+        if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints)
+        {
             SetOpenDoorAnamation();
-        
+        }
+
         else if (!m_IsClosed)
             SetCloseDoorAnimation();
     }
