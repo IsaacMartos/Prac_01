@@ -288,17 +288,6 @@ public class DroneEnemy : MonoBehaviour
         }
     }
 	
-	IEnumerator StartSeeingPlayer()
-	{
-        yield return new WaitForSeconds(3.5f);
-		if (SeesPlayer())
-		{
-			m_WatchedPlayer = true;
-			if (m_WatchedPlayer == true)
-				SetChaseState();
-		}           
-
-    }
 
     public void Hit(float life)
     {
