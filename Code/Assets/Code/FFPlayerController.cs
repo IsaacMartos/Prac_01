@@ -86,6 +86,8 @@ public class FFPlayerController : MonoBehaviour
     public UIControls m_UIControls;
     public GameObject m_KeyMessage;
 
+    private AudioManager AudioManager;
+
     float m_Life;
     float m_Points;
     float m_Shield;
@@ -111,6 +113,7 @@ public class FFPlayerController : MonoBehaviour
         SetIdleWeaponAnimation();        
         m_DecalsPool = new TCOObjectPool(10, m_DecalPrefab);
         m_PlayerDead = false;
+        AudioManager = FindObjectOfType<AudioManager>();
     }
 #if UNITY_EDITOR
     void UpdateInputDebug()
@@ -151,6 +154,7 @@ public class FFPlayerController : MonoBehaviour
             l_Direction -= l_RightDirection;
         if (Input.GetKeyDown(m_JumpKeyCode) && m_OnGround)
             m_VerticalSpeed = m_JumpSpeed;
+
         float l_FOV = m_NormalMovementFOV;
         if (Input.GetKey(m_RunKeyCode))
         {
@@ -162,6 +166,7 @@ public class FFPlayerController : MonoBehaviour
 
         l_Direction.Normalize();
         Vector3 l_Movement = l_Direction * l_Speed * Time.deltaTime;
+        //AudioManager.SeleccionAudio(1, 0.5f);
 
         //Rotation
         float l_MouseX = Input.GetAxis("Mouse X");
@@ -208,6 +213,7 @@ public class FFPlayerController : MonoBehaviour
         {
             Shoot();
             Instantiate(m_muzzlePrefab, m_muzzlePoint.transform.position, m_muzzlePoint.transform.rotation);
+            AudioManager.SeleccionAudio(0, 0.5f);
         }    
         
         
@@ -219,6 +225,7 @@ public class FFPlayerController : MonoBehaviour
             if (Input.GetKeyDown(m_ReloadKeyCode))
             {
                 SetReloadAnimation();
+                AudioManager.SeleccionAudio(1, 0.5f);
                 StartCoroutine(Reload());                
             }
             
@@ -227,6 +234,7 @@ public class FFPlayerController : MonoBehaviour
         if (m_CurrentAmmo == 0)
         {
             SetReloadAnimation();
+            AudioManager.SeleccionAudio(1, 0.5f);
             StartCoroutine(Reload());
             if(m_CurrentMaxAmmo == 0)
             {
