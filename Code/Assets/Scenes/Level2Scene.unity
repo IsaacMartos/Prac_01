@@ -669,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 5676773394724897084, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5676773394724897084, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
@@ -4658,7 +4658,7 @@ PrefabInstance:
     - target: {fileID: 702610651023400599, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17000008
+      value: -0.1700001
       objectReference: {fileID: 0}
     - target: {fileID: 702610651023400599, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
@@ -4688,17 +4688,17 @@ PrefabInstance:
     - target: {fileID: 702610651023400599, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 8.116283
       objectReference: {fileID: 0}
     - target: {fileID: 702610651023400599, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -41.556274
       objectReference: {fileID: 0}
     - target: {fileID: 702610651023400599, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -3.1609712
       objectReference: {fileID: 0}
     - target: {fileID: 702610651023400603, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
@@ -4855,6 +4855,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9003879494279474555, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003879494279474555, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_Animations.Array.data[3]
+      value: 
+      objectReference: {fileID: 7400000, guid: c98fb95f804c9d743bbafcaa2f9fa341, type: 2}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_Speed
@@ -4920,6 +4930,11 @@ PrefabInstance:
       propertyPath: m_CurrentAmmoText
       value: 
       objectReference: {fileID: 797202773}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_RunAnimationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: c98fb95f804c9d743bbafcaa2f9fa341, type: 2}
     - target: {fileID: 9003879494279474557, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_Center.y
@@ -49731,6 +49746,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 778c7be53403f9e45804f5a61a13a3e6, type: 3}
   - {fileID: 8300000, guid: 3c5362b263b776243ab4952416c1cf20, type: 3}
   - {fileID: 8300000, guid: 0e668674e6151b448a8c3640c03ac52f, type: 3}
+  - {fileID: 8300000, guid: 49d657a7645475b4c994053559722813, type: 3}
+  - {fileID: 8300000, guid: e12515ebf936ca4428399f6181189548, type: 3}
 --- !u!82 &1542438489
 AudioSource:
   m_ObjectHideFlags: 0

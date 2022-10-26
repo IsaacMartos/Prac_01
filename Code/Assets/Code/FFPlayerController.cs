@@ -73,6 +73,7 @@ public class FFPlayerController : MonoBehaviour
     public AnimationClip m_ShootingAnimationClip;
     public AnimationClip m_IdleAnimationClip;
     public AnimationClip m_ReloadAnimationClip;
+    public AnimationClip m_RunAnimationClip;
     private bool m_Shooting = false;
 
     [Header("UI")]
@@ -160,7 +161,10 @@ public class FFPlayerController : MonoBehaviour
         {
             l_Speed = m_Speed * m_FastSpeedMultiplier;
             l_FOV = m_RunMovementFOV;
+            SetRunAnimation();
         }
+
+        
 
         m_Camera.fieldOfView = l_FOV;
 
@@ -374,6 +378,12 @@ public class FFPlayerController : MonoBehaviour
     {
         m_Animations.CrossFade(m_ReloadAnimationClip.name, 0.1f);
         m_Animations.CrossFadeQueued(m_IdleAnimationClip.name, 0.1f);
+    }
+
+    void SetRunAnimation()
+    {
+        m_Animations.CrossFade(m_RunAnimationClip.name, 0.1f);
+        m_Animations.CrossFadeQueued(m_IdleAnimationClip.name, 0.0f);
     }
 
     IEnumerator EndShoot()
