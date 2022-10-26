@@ -250,7 +250,7 @@ public class DroneEnemy : MonoBehaviour
                 //Debug.Log("Shooting");
                 GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
 				m_CountdowwnBetweeenFireRate = 1f / m_DroneFireRate;
-				AudioManager.SeleccionAudio(5,0.5f);
+				AudioManager.SeleccionAudio(4,0.5f);
             }
 			m_CountdowwnBetweeenFireRate -= Time.deltaTime;
 			
