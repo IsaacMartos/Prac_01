@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+
 public class FFPlayerController : MonoBehaviour
 {
     float m_Yaw;
@@ -86,6 +88,8 @@ public class FFPlayerController : MonoBehaviour
     float m_Points;
     float m_Shield;
     int m_Keys;
+
+    public List<GameObject> m_RespawnGalleryObjects = new List<GameObject>();
 
     void Start()
     {
@@ -262,8 +266,8 @@ public class FFPlayerController : MonoBehaviour
             m_Shooting = true;
         }
 
-        //if (Input.GetKeyDown(m_RestartShootingGallery) && SceneManager.GetActiveScene().name == "Level1Scene")
-        //    GameController.GetGameController().RespawnGalleryElements();
+        if (Input.GetKeyDown(m_RestartShootingGallery) && SceneManager.GetActiveScene().name == "Level1Scene")
+            RespawnGalleryElements();
     }
 
     public bool CanShoot()
@@ -302,19 +306,19 @@ public class FFPlayerController : MonoBehaviour
             {
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitEasyDiana();
-                GameController.GetGameController().AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
+                AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
             }
             if (l_RayCastHit.collider.tag == "NDiana")
             {
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitNormalDiana();
-                GameController.GetGameController().AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
+                AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
             }
             if (l_RayCastHit.collider.tag == "DDiana")
             {
                 l_RayCastHit.transform.gameObject.SetActive(false);
                 GameController.m_GameController.HitHardDiana();
-                GameController.GetGameController().AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
+                AddRespawnGalleryElement(l_RayCastHit.transform.gameObject);
             }
             if (l_RayCastHit.collider.tag == "Target")
             {
@@ -510,5 +514,20 @@ public class FFPlayerController : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         m_KeyMessage.SetActive(false);
     }
-        
+
+    public void AddRespawnGalleryElement(GameObject RespawnGalleryObject)
+    {
+        m_RespawnGalleryObjects.Add(RespawnGalleryObject);
+    }
+
+    public void RespawnGalleryElements()
+    {
+        foreach (GameObject l_RespawnObject in m_RespawnGalleryObjects)
+        {
+            l_RespawnObject.SetActive(true);
+        }
+    }
+
+    
+
 }

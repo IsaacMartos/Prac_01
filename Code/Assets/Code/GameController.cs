@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 
     public List<DroneEnemy> m_RespawnDrones = new List<DroneEnemy>();
     public List<Item> m_RespawnItems = new List<Item>();
-    public List<GameObject> m_RespawnGalleryObjects = new List<GameObject>();
+    
 
     private void Start()
     {        
@@ -60,19 +60,7 @@ public class GameController : MonoBehaviour
             l_RespawnObject.Respawn();
         }
     }
-
-    public void AddRespawnGalleryElement(GameObject RespawnGalleryObject)
-    {
-        m_RespawnGalleryObjects.Add(RespawnGalleryObject);
-    }
-
-    //public void RespawnGalleryElements()
-    //{
-    //    foreach (GameObject l_RespawnObject in m_RespawnGalleryObjects)
-    //    {
-    //        l_RespawnObject.Respawn();
-    //    }
-    //}
+     
 
     public void AddRespawnItemsElement(Item RespawnItems)
     {
