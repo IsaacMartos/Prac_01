@@ -164,8 +164,6 @@ public class FFPlayerController : MonoBehaviour
             SetRunAnimation();
         }
 
-        
-
         m_Camera.fieldOfView = l_FOV;
 
         l_Direction.Normalize();
