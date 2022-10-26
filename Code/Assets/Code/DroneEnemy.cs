@@ -104,13 +104,12 @@ public class DroneEnemy : MonoBehaviour
 			SetDieState();
 		}
 
-		if(Vector3.Distance(l_PlayerPosition,transform.position) >= 10f && !ShowLifeBar())
+		if(!ShowLifeBar())
 		{
 			m_LifeBar.SetActive(false);
 		}
-
         
-        //Debug.Log(m_DroneLifes);
+        Debug.Log(ShowLifeBar());
     }
 	void SetIdelState()
 	{
