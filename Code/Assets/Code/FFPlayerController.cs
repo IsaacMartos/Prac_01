@@ -56,7 +56,9 @@ public class FFPlayerController : MonoBehaviour
     public float m_MaxShootDistance;
     public LayerMask m_ShootinLayerMask;
     public GameObject m_Bullet;
-    public Transform m_BulletSpawn;    
+    public Transform m_BulletSpawn;
+    public GameObject m_muzzlePrefab;
+    public Transform m_muzzlePoint;
     
     float m_CurrentMaxAmmo;
     float m_MaxAmmo;
@@ -204,7 +206,8 @@ public class FFPlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && m_CurrentAmmo > 0 && CanShoot())
         {
-            Shoot();            
+            Shoot();
+            Instantiate(m_muzzlePrefab, m_muzzlePoint.transform.position, m_muzzlePoint.transform.rotation);
         }    
         
         
@@ -281,7 +284,7 @@ public class FFPlayerController : MonoBehaviour
         //Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 1)); //Esto para las balas realistas
         Vector3 direction = m_Camera.transform.TransformDirection(new Vector3(0,0, 1));
         Debug.DrawRay(m_Camera.transform.position, direction * 100, Color.green, 5f);
-
+        
         //GameObject m_CurrentBullet = Instantiate(m_Bullet);
         //m_CurrentBullet.transform.position = m_BulletSpawn.position;        
 

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8649813771291030269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5271552934058780841}
+  m_Layer: 3
+  m_Name: MuzzlePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5271552934058780841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649813771291030269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.016, y: 0.057, z: 0.485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7728052758507863819}
+  m_Father: {fileID: 702610651023400599}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9003879494279474559
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,8 +116,7 @@ MonoBehaviour:
   m_DebugLockKeyCode: 111
   m_ReloadKeyCode: 114
   m_RestartKeyCode: 13
-  m_NextLevelKeyCode: 13
-  m_PruebaVida: 104
+  m_RestartShootingGallery: 108
   m_JumpSpeed: 6
   m_Camera: {fileID: 9003879494883118708}
   m_NormalMovementFOV: 60
@@ -100,8 +130,9 @@ MonoBehaviour:
   m_Bullet: {fileID: 6931565664397813329, guid: ca7ccfa026827514bb38c3feddc9b796,
     type: 3}
   m_BulletSpawn: {fileID: 9003879495447938920}
-  m_MaxAmmo: 60
-  m_AmmoCapacity: 30
+  m_muzzlePrefab: {fileID: 0}
+  m_muzzlePoint: {fileID: 0}
+  m_DroneGetShoot: 0
   m_Animations: {fileID: 9003879494279474555}
   m_ShootingAnimationClip: {fileID: 7400000, guid: ce4d481afef6b0e4d81bc4055135487b,
     type: 2}
@@ -113,6 +144,11 @@ MonoBehaviour:
   m_PointsText: {fileID: 0}
   m_CurrentAmmoText: {fileID: 0}
   m_MaxAmmoText: {fileID: 0}
+  m_GetHitImage: {fileID: 0}
+  m_GameoverScreen: {fileID: 0}
+  m_UIControls: {fileID: 0}
+  m_KeyMessage: {fileID: 0}
+  m_RespawnGalleryObjects: []
 --- !u!111 &9003879494279474555
 Animation:
   m_ObjectHideFlags: 0
@@ -588,4 +624,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3969608813793515168, guid: 7550f3d877aa1704b855836414a56b4b,
     type: 3}
   m_PrefabInstance: {fileID: 4528033546912909367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7723661155069243499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5271552934058780841}
+    m_Modifications:
+    - target: {fileID: 1336949550903370, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_Name
+      value: VFX_M4 Muzzle Flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02912931
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000040978193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.17330605
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4543ab5e3d405ec40a8d4e9aa5165030, type: 3}
+--- !u!4 &7728052758507863819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4639870034382688, guid: 4543ab5e3d405ec40a8d4e9aa5165030,
+    type: 3}
+  m_PrefabInstance: {fileID: 7723661155069243499}
   m_PrefabAsset: {fileID: 0}
