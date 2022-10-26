@@ -13,10 +13,11 @@ public class DoorController : MonoBehaviour
     bool m_IsClosed = false;
 
     private AudioManager AudioManager;
-
+    
     void Start()
     {
         SetIdelDoorAnimation();
+        AudioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -25,29 +26,18 @@ public class DoorController : MonoBehaviour
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
         if (DetectionPlayer())
         {
+            
             SetOpenDoorAnamation();
-            //AudioManager.SeleccionAudio(4, 0.5f);
+            
         }
-
-
-        /*if (GameController.GetGameController().GetPoints() >= m_DoorOpenPoints && gameObject.tag == "PointsDoor")
-        {
-            SetOpenDoorAnamation();
-        }*/
 
         else if (!m_IsClosed)
 		{
             SetCloseDoorAnimation();
             //AudioManager.SeleccionAudio(4, 0.5f);
         }
-            
-                
-        //Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    SceneManager.LoadScene("Level2Scene");
-        //}
-
+          
+        
     }
 
     bool DetectionPlayer()
@@ -61,6 +51,7 @@ public class DoorController : MonoBehaviour
         m_IsClosed = false;
         m_Animation.CrossFade(m_DoorOpening.name, 0.1f);
         m_Animation.CrossFadeQueued(m_DoorOpen.name, 0.0f);
+        
         //m_Animation.CrossFadeQueued(m_DoorClosing.name, 0.1f);
         //StartCoroutine(StopDoor());
     }
@@ -79,6 +70,5 @@ public class DoorController : MonoBehaviour
         m_Animation.CrossFade(m_DoorClose.name, 0.1f);
     }
 
-    
-    
+   
 }

@@ -161,9 +161,14 @@ public class FFPlayerController : MonoBehaviour
         {
             l_Speed = m_Speed * m_FastSpeedMultiplier;
             l_FOV = m_RunMovementFOV;
-            SetRunAnimation();
+            SetRunAnimation();            
         }
-
+        if (Input.GetKeyUp(m_RunKeyCode))
+        {
+            SetIdleWeaponAnimation();
+        }
+        
+        
         m_Camera.fieldOfView = l_FOV;
 
         l_Direction.Normalize();
@@ -215,10 +220,9 @@ public class FFPlayerController : MonoBehaviour
         {
             Shoot();
             Instantiate(m_muzzlePrefab, m_muzzlePoint.transform.position, m_muzzlePoint.transform.rotation);
-            AudioManager.SeleccionAudio(0, 0.5f);
+            AudioManager.SeleccionAudio(0, 0.25f);
         }    
-        
-        
+                
         //Debug.Log(m_MaxAmmo + " current ammo ");
         //Debug.Log(m_CurrentMaxAmmo + "currentmaxammo");
 
@@ -363,6 +367,8 @@ public class FFPlayerController : MonoBehaviour
     void SetIdleWeaponAnimation()
     {
         m_Animations.CrossFade(m_IdleAnimationClip.name);
+        m_Animations.CrossFadeQueued(m_RunAnimationClip.name);
+
     }
 
     void SetWeaponShootAnimation()
@@ -381,7 +387,8 @@ public class FFPlayerController : MonoBehaviour
     void SetRunAnimation()
     {
         m_Animations.CrossFade(m_RunAnimationClip.name, 0.1f);
-        m_Animations.CrossFadeQueued(m_IdleAnimationClip.name, 0.0f);
+        m_Animations.CrossFadeQueued(m_IdleAnimationClip.name, 0.1f);
+        
     }
 
     IEnumerator EndShoot()
@@ -389,6 +396,7 @@ public class FFPlayerController : MonoBehaviour
         yield return new WaitForSeconds(m_ShootingAnimationClip.length);
         m_Shooting = false;
     }
+        
 
     IEnumerator Reload()
     {
@@ -475,12 +483,7 @@ public class FFPlayerController : MonoBehaviour
 	{
         if (other.tag == "Item")
             other.GetComponent<Item>().Pick(this);
-        if (other.tag == "Key")
-		{
-            other.GetComponent<Item>().Pick(this);
-            //AudioManager.SeleccionAudio(2, 0.5f);
-        }
-            
+                    
         //Debug.Log(m_Life);
         if (other.transform.tag == "DeadZone")
         {

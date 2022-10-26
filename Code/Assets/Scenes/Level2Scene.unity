@@ -669,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 5676773394724897084, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5676773394724897084, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
@@ -5928,6 +5928,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &202817602
 Animation:
   m_ObjectHideFlags: 0
@@ -7186,6 +7187,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  puerta: {fileID: 0}
 --- !u!65 &236701163
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9231,6 +9233,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &326856840
 Animation:
   m_ObjectHideFlags: 0
@@ -9844,6 +9847,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &343717140
 Animation:
   m_ObjectHideFlags: 0
@@ -15548,6 +15552,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  puerta: {fileID: 0}
 --- !u!1 &589420776
 GameObject:
   m_ObjectHideFlags: 0
@@ -20722,6 +20727,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  puerta: {fileID: 0}
 --- !u!65 &624134133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24540,6 +24546,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &731928110
 Animation:
   m_ObjectHideFlags: 0
@@ -44180,6 +44187,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &1332752261
 Animation:
   m_ObjectHideFlags: 0
@@ -52371,6 +52379,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: b7403d25d77b8e446923aa1e0be0128e, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: cd19b6716a1a7ac4b9d210176f99a3bc, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: bf5ad34e25c72cd4d8b6684c9734c1f4, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &1652740986
 Animation:
   m_ObjectHideFlags: 0
@@ -55904,6 +55913,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &1771517021
 Animation:
   m_ObjectHideFlags: 0
@@ -63375,6 +63385,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 0}
   m_DoorClosing: {fileID: 0}
   m_DoorOpening: {fileID: 0}
+  puerta: {fileID: 0}
 --- !u!65 &2068507285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64487,6 +64498,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &2082683604
 Animation:
   m_ObjectHideFlags: 0
@@ -65235,6 +65247,7 @@ MonoBehaviour:
   m_DoorClose: {fileID: 7400000, guid: fc38f2e96e324204dac29e2a65587f2c, type: 2}
   m_DoorClosing: {fileID: 7400000, guid: ced82294c01296e40b20d99f0ca6d599, type: 2}
   m_DoorOpening: {fileID: 7400000, guid: 5152147e8ca1a4c49984374409f87bd6, type: 2}
+  puerta: {fileID: 0}
 --- !u!111 &2118459484
 Animation:
   m_ObjectHideFlags: 0
@@ -66583,7 +66596,7 @@ PrefabInstance:
     - target: {fileID: 6852566179252133380, guid: 9e2b4e47d8ef616438d1b5268c50a529,
         type: 3}
       propertyPath: m_TagString
-      value: Key
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 6852566179252133432, guid: 9e2b4e47d8ef616438d1b5268c50a529,
         type: 3}

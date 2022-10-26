@@ -65,8 +65,9 @@ public class DroneEnemy : MonoBehaviour
 
 	void Start()
 	{
-		SetIdelState();		
-	}
+		SetIdelState();	
+		AudioManager = FindObjectOfType<AudioManager>();
+    }
 
 	void Update()
 	{
