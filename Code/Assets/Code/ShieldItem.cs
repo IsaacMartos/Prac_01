@@ -9,7 +9,7 @@ public class ShieldItem : Item
 		if (Player.GetShield() < 150.0f)
 		{
 			Player.AddShield(m_Shield);
-            GameController.GetGameController().AddRespawnItemsElement(this);
+            //GameController.GetGameController().AddRespawnItemsElement(this);
             gameObject.SetActive(false);
 		}
 	}
