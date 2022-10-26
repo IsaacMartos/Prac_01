@@ -109,7 +109,6 @@ public class DroneEnemy : MonoBehaviour
 			m_LifeBar.SetActive(false);
 		}
         
-        Debug.Log(ShowLifeBar());
     }
 	void SetIdelState()
 	{
