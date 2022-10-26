@@ -2511,6 +2511,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 334547861}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &336301521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336301522}
+  - component: {fileID: 336301524}
+  - component: {fileID: 336301523}
+  m_Layer: 5
+  m_Name: RestartGallery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &336301522
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336301521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.64222634, y: 0.64222634, z: 0.32111317}
+  m_Children: []
+  m_Father: {fileID: 17026350}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 21, y: 88}
+  m_SizeDelta: {x: 186.631, y: -797.564}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &336301523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336301521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 110
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 130
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "If you wannna play again \npress E"
+--- !u!222 &336301524
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336301521}
+  m_CullTransparentMesh: 1
 --- !u!1 &345105016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010385664364, guid: ddcd83dc3d319493a95f42f1a6f73bca,
@@ -10858,7 +10937,8 @@ MonoBehaviour:
   m_Text: {fileID: 401724884}
   m_PointsText: {fileID: 1025562259}
   m_StartShootingGalleryKey: 13
-  m_RestartShootingGalleryKey: 108
+  m_RestartShootingGalleryKey: 101
+  m_RestartGallery: {fileID: 336301521}
 --- !u!4 &1381239486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013516894110, guid: a33e88199201a48a79ff57093d223a25,
@@ -25471,7 +25551,7 @@ PrefabInstance:
     - target: {fileID: 8015300313440485204, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8450538512361666943, guid: cf587b7325be7814aad37ecbb758a713,
         type: 3}
@@ -25677,6 +25757,11 @@ PrefabInstance:
       objectReference: {fileID: 520672492}
     - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
+      propertyPath: m_RestartGallery
+      value: 
+      objectReference: {fileID: 336301521}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
       propertyPath: m_CurrentAmmoText
       value: 
       objectReference: {fileID: 1903971224}
@@ -25685,6 +25770,11 @@ PrefabInstance:
       propertyPath: m_RunAnimationClip
       value: 
       objectReference: {fileID: 7400000, guid: a62cdb58cc240bc45a6f67e974e3fa68, type: 2}
+    - target: {fileID: 9003879494279474556, guid: 745ce00b85530b146b9e5ff55659a5e6,
+        type: 3}
+      propertyPath: m_RestartShootingGallery
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 9003879494279474558, guid: 745ce00b85530b146b9e5ff55659a5e6,
         type: 3}
       propertyPath: m_RootOrder

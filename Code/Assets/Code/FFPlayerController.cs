@@ -86,6 +86,7 @@ public class FFPlayerController : MonoBehaviour
     public GameObject m_GameoverScreen;
     public UIControls m_UIControls;
     public GameObject m_KeyMessage;
+    public GameObject m_RestartGallery;
 
     private AudioManager AudioManager;
 
@@ -278,9 +279,9 @@ public class FFPlayerController : MonoBehaviour
             
         }
 
-        if(SceneManager.GetActiveScene().name == "Level1Scene" && m_Points >= 200f)
+        if(SceneManager.GetActiveScene().name == "Level1Scene" && GameController.GetGameController().GetPoints() >= 200f)
         {
-            m_Shooting = true;
+            m_RestartGallery.SetActive(true);
         }
 
         

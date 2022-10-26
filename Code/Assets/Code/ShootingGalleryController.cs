@@ -9,7 +9,8 @@ public class ShootingGalleryController : MonoBehaviour
     public Text m_Text;
     public GameObject m_PointsText;
     public KeyCode m_StartShootingGalleryKey = KeyCode.Return;
-    public KeyCode m_RestartShootingGalleryKey = KeyCode.L;
+    public KeyCode m_RestartShootingGalleryKey = KeyCode.E;
+    public GameObject m_RestartGallery;
     private bool m_StartShootingGallery = false;
 
     private void Start()
@@ -43,15 +44,16 @@ public class ShootingGalleryController : MonoBehaviour
         if (Input.GetKeyDown(m_RestartShootingGalleryKey) && actualPoints >= 200)
         {
             GameController.GetGameController().GetPlayer().RespawnGalleryElements();
-            GameController.GetGameController().RestartGamePoints();
-            actualPoints = 0f;
+            GameController.GetGameController().RestartGamePoints();            
+            m_RestartGallery.SetActive(false);
             StartCoroutine(StartingShottingGallery());
             m_StartShootingGallery = true;
             m_Text.enabled = false;
-            m_PointsText.SetActive(true);
-                
+            m_PointsText.SetActive(true);               
             
         }
+
+        
     }
 
     IEnumerator StartingShottingGallery()
@@ -64,7 +66,8 @@ public class ShootingGalleryController : MonoBehaviour
         }
         //m_Text.enabled = false;
     }
-    
+
+       
 
     bool CheckDistance()
     {
