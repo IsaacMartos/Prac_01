@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 public class FFPlayerController : MonoBehaviour
 {
