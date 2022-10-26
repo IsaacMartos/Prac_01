@@ -14,7 +14,7 @@ public class LifeItem : Item
 
 	public override void Pick(FFPlayerController Player)
 	{
-		if (Player.GetLife() < 150.0f)
+		if (Player.GetLife() < 100.0f)
 		{
 			AudioManager.SeleccionAudio(6, 1.5f);
 			Player.AddLife(m_Life);

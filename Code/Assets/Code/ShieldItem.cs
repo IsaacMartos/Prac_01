@@ -13,7 +13,7 @@ public class ShieldItem : Item
 
 	public override void Pick(FFPlayerController Player)
 	{
-		if (Player.GetShield() < 150.0f)
+		if (Player.GetShield() < 100.0f)
 		{
 			AudioManager.SeleccionAudio(7, 1.5f);
 			Player.AddShield(m_Shield);
