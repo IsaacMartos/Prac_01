@@ -66423,6 +66423,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2390547220114205121, guid: 94c97f1c214594d4e9a191076d89adee,
+        type: 3}
+      propertyPath: AudioClips.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390547220114205121, guid: 94c97f1c214594d4e9a191076d89adee,
+        type: 3}
+      propertyPath: AudioClips.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 40df7f0fc4569eb46b42c16622e5a770, type: 3}
     - target: {fileID: 2390547220114205123, guid: 94c97f1c214594d4e9a191076d89adee,
         type: 3}
       propertyPath: m_RootOrder

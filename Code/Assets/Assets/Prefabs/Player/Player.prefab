@@ -139,7 +139,7 @@ MonoBehaviour:
   m_IdleAnimationClip: {fileID: 7400000, guid: 83ec21cb5d74d9c43af88cc1047710c9, type: 2}
   m_ReloadAnimationClip: {fileID: 7400000, guid: d7d1ced9069ee6f4caa461da9046950c,
     type: 2}
-  m_RunAnimationClip: {fileID: 0}
+  m_RunAnimationClip: {fileID: 7400000, guid: 17027d4a90429e94abcbe0ec4c28a737, type: 2}
   m_LifesText: {fileID: 0}
   m_ShieldText: {fileID: 0}
   m_PointsText: {fileID: 0}
