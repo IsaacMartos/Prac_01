@@ -308,7 +308,6 @@ public class FFPlayerController : MonoBehaviour
             if (l_RayCastHit.collider.tag == "DroneCollider")
             {
                 l_RayCastHit.collider.GetComponent<HitCollider>().Hit();
-                //m_DroneGetShoot = true;
             }              
 
             if(l_RayCastHit.collider.tag != ("EDiana") || l_RayCastHit.collider.tag != ("DDiana") || l_RayCastHit.collider.tag != ("NDiana"))
