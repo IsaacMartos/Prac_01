@@ -4817,6 +4817,7 @@ GameObject:
   - component: {fileID: 9090630262107930881}
   - component: {fileID: 3261585399519066648}
   - component: {fileID: 7235369624632430706}
+  - component: {fileID: 7842511119053711427}
   m_Layer: 0
   m_Name: FirstAidKit_White
   m_TagString: Item
@@ -4915,3 +4916,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Life: 25
   Particulas: {fileID: 1392074048092052952}
+--- !u!111 &7842511119053711427
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7355713013926475229}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: cc508154a5508104598d75e2d560e6ff, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: cc508154a5508104598d75e2d560e6ff, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

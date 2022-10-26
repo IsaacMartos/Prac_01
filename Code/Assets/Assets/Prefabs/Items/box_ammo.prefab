@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 461146}
   - component: {fileID: -6476436618108127585}
   - component: {fileID: 8140791330700186904}
+  - component: {fileID: 7416105464001439430}
   m_Layer: 0
   m_Name: box_ammo
   m_TagString: Item
@@ -255,6 +256,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Ammo: 30
   Particulas: {fileID: 7942116366492618332}
+--- !u!111 &7416105464001439430
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183502}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 32324406dd5b334469a4e0c81bfcf31e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 32324406dd5b334469a4e0c81bfcf31e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7942116366492618332
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000010119388918}
   - component: {fileID: 6642153993960653843}
   - component: {fileID: 937541519841794413}
+  - component: {fileID: 3580891451117534535}
   m_Layer: 0
   m_Name: bottle_blue
   m_TagString: Item
@@ -111,6 +112,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Shield: 25
   Particulas: {fileID: 307425010224001626}
+--- !u!111 &3580891451117534535
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011052568322}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d40cf7197821d3a4c87246b5f1650744, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d40cf7197821d3a4c87246b5f1650744, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1000013317980782
 GameObject:
   m_ObjectHideFlags: 0
