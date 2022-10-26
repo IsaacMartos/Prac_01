@@ -10,6 +10,8 @@ public class KeyDoorController : MonoBehaviour
     public AnimationClip m_DoorOpening;
     bool m_IsClosed = false;
 
+    private AudioManager AudioManager;
+
     void Start()
     {
         SetIdelDoorAnimation();
@@ -41,6 +43,7 @@ public class KeyDoorController : MonoBehaviour
         m_IsClosed = false;
         m_Animation.CrossFade(m_DoorOpening.name, 0.1f);
         m_Animation.CrossFadeQueued(m_DoorOpen.name, 0.0f);
+        AudioManager.SeleccionAudio(4, 0.5f);
         //m_Animation.CrossFadeQueued(m_DoorClosing.name, 0.1f);
         //StartCoroutine(StopDoor());
     }
@@ -50,6 +53,7 @@ public class KeyDoorController : MonoBehaviour
         m_IsClosed = true;
         m_Animation.CrossFade(m_DoorClosing.name, 0.1f);
         m_Animation.CrossFadeQueued(m_DoorClose.name, 0.0f);
+        AudioManager.SeleccionAudio(4, 0.5f);
         //m_Animation.CrossFadeQueued(m_DoorClose.name, 0.1f);
     }
 

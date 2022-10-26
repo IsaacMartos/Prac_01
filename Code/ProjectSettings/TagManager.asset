@@ -25,6 +25,7 @@ TagManager:
   - PointsDoor
   - KeyDoor
   - DeadZone
+  - Key
   layers:
   - Default
   - TransparentFX

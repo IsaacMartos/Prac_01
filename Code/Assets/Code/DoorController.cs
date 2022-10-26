@@ -12,6 +12,8 @@ public class DoorController : MonoBehaviour
     public AnimationClip m_DoorOpening;
     bool m_IsClosed = false;
 
+    private AudioManager AudioManager;
+
     void Start()
     {
         SetIdelDoorAnimation();
@@ -24,6 +26,7 @@ public class DoorController : MonoBehaviour
         if (DetectionPlayer())
         {
             SetOpenDoorAnamation();
+            //AudioManager.SeleccionAudio(4, 0.5f);
         }
 
 
@@ -33,7 +36,11 @@ public class DoorController : MonoBehaviour
         }*/
 
         else if (!m_IsClosed)
+		{
             SetCloseDoorAnimation();
+            //AudioManager.SeleccionAudio(4, 0.5f);
+        }
+            
                 
         //Debug.Log(Vector3.Distance(l_PlayerPosition, transform.position));
         //if (Input.GetKeyDown(KeyCode.E))

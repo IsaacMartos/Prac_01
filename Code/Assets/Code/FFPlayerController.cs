@@ -459,6 +459,7 @@ public class FFPlayerController : MonoBehaviour
             m_Life = Mathf.Clamp(m_Life - damage, 0.0f, 100.0f);
         }
         GotHurt();
+        AudioManager.SeleccionAudio(3, 0.5f);
 
     }
 
@@ -466,6 +467,12 @@ public class FFPlayerController : MonoBehaviour
 	{
         if (other.tag == "Item")
             other.GetComponent<Item>().Pick(this);
+        if (other.tag == "Key")
+		{
+            other.GetComponent<Item>().Pick(this);
+            //AudioManager.SeleccionAudio(2, 0.5f);
+        }
+            
         //Debug.Log(m_Life);
         if (other.transform.tag == "DeadZone")
         {

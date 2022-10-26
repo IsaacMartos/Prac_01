@@ -56,7 +56,9 @@ public class DroneEnemy : MonoBehaviour
     public AnimationClip m_DroneAlert;
     public AnimationClip m_DroneIdle;
 
-    private void Awake()
+	private AudioManager AudioManager;
+
+	private void Awake()
 	{
 		m_NavMeshAgent = GetComponent<NavMeshAgent>();
 	}
@@ -247,6 +249,7 @@ public class DroneEnemy : MonoBehaviour
                 //Debug.Log("Shooting");
                 GameController.GetGameController().GetPlayer().GetHitDrone(m_DroneDamage);
 				m_CountdowwnBetweeenFireRate = 1f / m_DroneFireRate;
+				AudioManager.SeleccionAudio(5,0.5f);
             }
 			m_CountdowwnBetweeenFireRate -= Time.deltaTime;
 			
