@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -105,13 +104,11 @@ public class DroneEnemy : MonoBehaviour
 			SetDieState();
 		}
 
-		if(Vector3.Distance(l_PlayerPosition,transform.position) >= 10f)
+		if(!ShowLifeBar())
 		{
 			m_LifeBar.SetActive(false);
 		}
-
         
-        //Debug.Log(m_DroneLifes);
     }
 	void SetIdelState()
 	{
@@ -291,17 +288,6 @@ public class DroneEnemy : MonoBehaviour
         }
     }
 	
-	IEnumerator StartSeeingPlayer()
-	{
-        yield return new WaitForSeconds(3.5f);
-		if (SeesPlayer())
-		{
-			m_WatchedPlayer = true;
-			if (m_WatchedPlayer == true)
-				SetChaseState();
-		}           
-
-    }
 
     public void Hit(float life)
     {
@@ -315,6 +301,18 @@ public class DroneEnemy : MonoBehaviour
         Vector3 l_Position = GameController.GetGameController().GetPlayer().m_Camera.WorldToViewportPoint(m_LifeBarAnchorPosition.position);
         m_LifeBarRectPosition.anchoredPosition = new Vector3(l_Position.x * 1920f, -(1080f - l_Position.y * 1080f), 0.0f);
         m_LifeBarRectPosition.gameObject.SetActive(l_Position.z > 0.0f);
+    }
+
+	bool ShowLifeBar()
+	{
+        Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
+        Vector3 l_EyesPosition = transform.position + Vector3.up * m_EyesHeight;
+        Vector3 l_PlayerEyesPosition = l_PlayerPosition + Vector3.up * m_EyesPlayerHeight;
+        Vector3 l_Direction = l_PlayerEyesPosition - l_EyesPosition;
+        float l_Lenght = l_Direction.magnitude;
+        l_Direction /= l_Lenght;
+        Ray l_Ray = new Ray(l_EyesPosition, l_Direction);
+        return !Physics.Raycast(l_Ray, l_Lenght, m_SightLayerMask.value);
     }
     
 	public void GenerateRandomNumber()

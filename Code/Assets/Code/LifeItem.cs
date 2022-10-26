@@ -9,7 +9,7 @@ public class LifeItem : Item
 		if (Player.GetLife() < 150.0f)
 		{
 			Player.AddLife(m_Life);
-            GameController.GetGameController().AddRespawnItemsElement(this);
+            //GameController.GetGameController().AddRespawnItemsElement(this);
             gameObject.SetActive(false);
 		}
 	}

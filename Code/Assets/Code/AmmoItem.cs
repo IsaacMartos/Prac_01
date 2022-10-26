@@ -9,7 +9,7 @@ public class AmmoItem : Item
 		if (Player.GetAmmo() < 50.0f)
 		{
 			Player.AddAmmo(m_Ammo);
-            GameController.GetGameController().AddRespawnItemsElement(this);
+            //GameController.GetGameController().AddRespawnItemsElement(this);
             gameObject.SetActive(false);
 			//Debug.Log("mas vida");
 		}

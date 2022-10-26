@@ -157,6 +157,9 @@ MonoBehaviour:
   m_ShieldItem: {fileID: 1000013317980782, guid: 2cf6690298568294cb6b655c0a3aeb87,
     type: 3}
   m_BulletsItem: {fileID: 183502, guid: 4656138d9606a80408030bdc231b1233, type: 3}
+  m_Animation: {fileID: 0}
+  m_DroneAlert: {fileID: 0}
+  m_DroneIdle: {fileID: 0}
 --- !u!195 &2279219330596241351
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -234,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650ed6a0fc8b8049bbdc8df9002c00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Life: 0.8
+  m_Life: 0.4
   m_DroneEnemy: {fileID: 2279219330596241344}
 --- !u!135 &2279219330166614043
 SphereCollider:
@@ -261,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650ed6a0fc8b8049bbdc8df9002c00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Life: 0.5
+  m_Life: 0.2
   m_DroneEnemy: {fileID: 2279219330596241344}
 --- !u!135 &2279219330178286796
 SphereCollider:
@@ -288,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650ed6a0fc8b8049bbdc8df9002c00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Life: 0.5
+  m_Life: 0.2
   m_DroneEnemy: {fileID: 2279219330596241344}
 --- !u!1 &3256442601327292579
 GameObject:
