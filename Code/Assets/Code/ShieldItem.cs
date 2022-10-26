@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShieldItem : Item
 {
 	public float m_Shield;
+	public GameObject Particulas;
 	public override void Pick(FFPlayerController Player)
 	{
 		if (Player.GetShield() < 150.0f)
@@ -11,6 +12,7 @@ public class ShieldItem : Item
 			Player.AddShield(m_Shield);
             //GameController.GetGameController().AddRespawnItemsElement(this);
             gameObject.SetActive(false);
+			Particulas.SetActive(false);
 		}
 	}
     
