@@ -103,7 +103,7 @@ public class FFPlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         m_AimLocked = Cursor.lockState == CursorLockMode.Locked;
         SetIdleWeaponAnimation();        
-        m_DecalsPool = new TCOObjectPool(5, m_DecalPrefab);
+        m_DecalsPool = new TCOObjectPool(10, m_DecalPrefab);
         m_PlayerDead = false;
     }
 #if UNITY_EDITOR
