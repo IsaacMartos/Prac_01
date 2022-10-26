@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Ammo: 30
+  Particulas: {fileID: 7942116366492618332}
 --- !u!1 &7942116366492618332
 GameObject:
   m_ObjectHideFlags: 0
