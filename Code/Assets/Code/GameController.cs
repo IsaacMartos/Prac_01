@@ -166,7 +166,10 @@ public class GameController : MonoBehaviour
         return m_PlayerPoints;
     }
 
-
+    public int RestartGamePoints()
+    {
+        return m_PlayerPoints = 0;
+    }
 
 
 }

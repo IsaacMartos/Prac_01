@@ -266,8 +266,7 @@ public class FFPlayerController : MonoBehaviour
             m_Shooting = true;
         }
 
-        if (Input.GetKeyDown(m_RestartShootingGallery) && SceneManager.GetActiveScene().name == "Level1Scene")
-            RespawnGalleryElements();
+        
     }
 
     public bool CanShoot()

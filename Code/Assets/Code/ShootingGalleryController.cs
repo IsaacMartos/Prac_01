@@ -9,6 +9,7 @@ public class ShootingGalleryController : MonoBehaviour
     public Text m_Text;
     public GameObject m_PointsText;
     public KeyCode m_StartShootingGalleryKey = KeyCode.Return;
+    public KeyCode m_RestartShootingGalleryKey = KeyCode.L;
     private bool m_StartShootingGallery = false;
 
     private void Start()
@@ -20,22 +21,13 @@ public class ShootingGalleryController : MonoBehaviour
         }
         m_Text.enabled = false;
         m_PointsText.SetActive(false);
+        
     }
 
     private void Update()
     {
         Vector3 l_PlayerPosition = GameController.GetGameController().GetPlayer().transform.position;
-
-        //if(Vector3.Distance(l_PlayerPosition,transform.position) < 15f)
-        //{            
-        //    m_Text.enabled = true;
-        //    if (Input.GetKeyDown(m_StartShootingGalleryKey))
-        //    {
-        //        StartCoroutine(StartingShottingGallery());
-        //        m_StartShootingGallery = true;
-        //        Destroy(m_Text);
-        //    }
-        //}
+        float actualPoints = GameController.GetGameController().GetPoints();
 
         if (CheckDistance() && m_StartShootingGallery == false)
         {
@@ -47,6 +39,18 @@ public class ShootingGalleryController : MonoBehaviour
                 m_Text.enabled = false;
                 m_PointsText.SetActive(true);
             }
+        }
+        if (Input.GetKeyDown(m_RestartShootingGalleryKey) && actualPoints >= 200)
+        {
+            GameController.GetGameController().GetPlayer().RespawnGalleryElements();
+            GameController.GetGameController().RestartGamePoints();
+            actualPoints = 0f;
+            StartCoroutine(StartingShottingGallery());
+            m_StartShootingGallery = true;
+            m_Text.enabled = false;
+            m_PointsText.SetActive(true);
+                
+            
         }
     }
 
@@ -60,6 +64,7 @@ public class ShootingGalleryController : MonoBehaviour
         }
         //m_Text.enabled = false;
     }
+    
 
     bool CheckDistance()
     {
